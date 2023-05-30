@@ -19,9 +19,6 @@ The Python team is developing the second scenario.
 1. Beacon - device advertising BLE packet, can be carried device or stationary one depending on use case as described above.
 2. Reader - device hearing for advertised BLE packets to discover a presence and/or RSSI/TX-power to localize itself or beacon depending on use case.
 
-For additional entire project information please follow [Project's Knowledge Base](https://kb.epam.com/pages/viewpage.action?pageId=467207975)
-
-
 ## Stationary readers use case:
 
 This repository contains an application related to the stationary readers use case.
