@@ -1,7 +1,5 @@
 [beacons-prod]
-#blescan-026.petersburg.epam.com
-#blescan-027.petersburg.epam.com
-#blescan-028.petersburg.epam.com
+hostnames
 #[beacons-prod:vars]
 #ansible_ssh_pass=0micr0n3b 
 #ansible_ssh_user=pi 
@@ -10,10 +8,7 @@
 
 
 [beacons-dev]
-blescan-010.petersburg.epam.com
-blescan-011.petersburg.epam.com
-blescan-012.petersburg.epam.com
-blescan-013.petersburg.epam.com
+hostnames
 [beacons-dev:vars]
 ansible_ssh_pass=0micr0n3b 
 ansible_ssh_user=pi 
@@ -22,30 +17,27 @@ ansible_become_method=sudo
  
 
 [kafka_dev]
-ecse00500096.epam.com
+hostname
 [kafka_dev:vars]
-ansible_ssh_user=evgenii_maslennikov@epam.com
+ansible_ssh_user=user
 
 [kafka_prod]
-ecse00500aca.epam.com
+hostname
 [kafka_prod:vars]
-ansible_ssh_user=evgenii_maslennikov@epam.com
+ansible_ssh_user=user
 
 
 [kafka_test]
-ecse0050067c.epam.com
+hostname
 [kafka_test:vars]
-KAFKA_SERVER_IP=10.66.216.131
-ansible_ssh_user=evgenii_maslennikov@epam.com
+KAFKA_SERVER_IP=ip
+ansible_ssh_user=user
 
 [beacons-test]
-blescan-010.petersburg.epam.com
-blescan-011.petersburg.epam.com
-blescan-012.petersburg.epam.com
-blescan-013.petersburg.epam.com
+hostnames
 [beacons-test:vars]
 ansible_ssh_pass=0micr0n3b
 ansible_ssh_user=pi
 ansible_become=yes
 ansible_become_method=sudo
-KAFKA_SERVER_IP=10.66.216.131
+KAFKA_SERVER_IP=ip
