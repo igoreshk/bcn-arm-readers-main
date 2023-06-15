@@ -1,9 +1,6 @@
 """
 Provides parsing service for the advertising packets of bluetooth devices with a class BeaconResponseParser
 
-https://kb.epam.com/display/EPMLSTR/Data+format+from+wristband+to+receiver -- the information of the expired structure
-of a packet. Note: for different beacons there are different packet structures
-
 NOTE: Python's struct.pack() will add padding bytes unless you make the endianness explicit. Little endian
 should be used for BLE. Always start a struct.pack() format string with "<"
 """
