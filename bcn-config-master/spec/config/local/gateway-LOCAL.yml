@@ -1,0 +1,24 @@
+server:
+  session:
+    cookie:
+      secure: false
+
+eureka:
+  instance:
+    instance-id: gateway-app.local.svc.cluster.local
+
+ribbon:
+  ReadTimeout: 25000
+  ConnectTimeout: 25000
+
+hystrix.threadpool.default.coreSize: 10
+
+security:
+  oauth2:
+    client:
+      accessTokenUri: https://access-staging.epam.com/auth/realms/plusx/protocol/openid-connect/token
+
+endpoints:
+  cors:
+    origins: http://localhost:3000
+    enabled: true

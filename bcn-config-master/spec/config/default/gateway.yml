@@ -1,0 +1,129 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+  application:
+    name: gateway
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-service # service that provided configuration
+
+server:
+  port: 10020
+  session:
+    cookie:
+      secure: true
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+  eureka:
+    enabled: true
+
+hystrix.threadpool.default.coreSize: 100
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+
+security:
+  oauth2:
+    client:
+      id: epam-sso
+      userAuthorizationUri: https://access-staging.epam.com/auth/realms/plusx/protocol/openid-connect/auth?resource=https://bcn.lab.epam.com
+      useCurrentUri: true
+      authenticationScheme: query
+      clientAuthenticationScheme: form
+    sso:
+      login-path: /api/v1/login
+      keyStoreType: pkcs12
+      keyStorePassword: ${keyStore-password}
+      keyStoreEncodedFile: ${keyStore-file}
+
+zuul:
+  sensitiveHeaders:
+  routes:
+    uaa-service-user:
+      path: /api/v1/users/**
+      serviceId: uaa-service
+      stripPrefix: false
+    uaa-service-role:
+      path: /api/v1/roles/**
+      serviceId: uaa-service
+      stripPrefix: false
+    uaa-service:
+      path: /api/v1/oauth/**
+      serviceId: uaa-service
+      stripPrefix: false
+    building-service-beacons:
+      path: /api/v1/beacons/**
+      serviceId: building-service
+      stripPrefix: false
+    building-service-buildings:
+      path: /api/v1/buildings/**
+      serviceId: building-service
+      stripPrefix: false
+    building-service-edges:
+      path: /api/v1/edges/**
+      serviceId: building-service
+      stripPrefix: false
+    building-service-levels:
+      path: /api/v1/levels/**
+      serviceId: building-service
+      stripPrefix: false
+    building-service-areas:
+      path: /api/v1/areas/**
+      serviceId: building-service
+      stripPrefix: false
+    building-service-scale:
+      path: /api/v1/scale/**
+      serviceId: building-service
+      stripPrefix: false
+    building-service-scale-vertex:
+      path: /api/v1/scale-vertex/**
+      serviceId: building-service
+      stripPrefix: false
+    building-service-reader:
+      path: /api/v1/readers/**
+      serviceId: building-service
+      stripPrefix: false
+    building-service-route:
+      path: /api/v1/route/**
+      serviceId: building-service
+      stripPrefix: false
+    building-service-vertices:
+      path: /api/v1/vertices/**
+      serviceId: building-service
+      stripPrefix: false
+    monitor-service-trilateration-persistence:
+      path: /api/v1/monitor/history/**
+      serviceId: monitor-service
+      stripPrefix: false
+    monitor-service-visitor:
+      path: /api/v1/visitors/**
+      serviceId: monitor-service
+      stripPrefix: false
+    monitor-service-visitor-group:
+      path: /api/v1/visitor-groups/**
+      serviceId: monitor-service
+      stripPrefix: false
+    monitor-service_swagger:
+      path: /api/v1/monitor-service/swagger/**
+      serviceId: monitor-service
+      stripPrefix: true
+    uaa-service-swagger:
+      path: /api/v1/uaa-service/swagger/**
+      serviceId: uaa-service
+      stripPrefix: true  
+    building-service-swagger:
+      path: /api/v1/building-service/swagger/**
+      serviceId: building-service
+      stripPrefix: true
+    mobile-service-swagger:
+      path: /api/v1/mobile-service/swagger/**
+      serviceId: mobile-service
+      stripPrefix: true
+    mobile-service:
+      path: /api/v1/mobile/**
+      serviceId: mobile-service
+      stripPrefix: false

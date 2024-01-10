@@ -1,0 +1,20 @@
+beacons:
+  sso:
+    registeredRedirectUri: http://localhost:3000/api/v1/login
+
+spring.data.mongodb:
+  host: localhost
+  port: 27017
+
+eureka:
+  instance:
+    prefer-ip-address: false
+
+logging:
+  level:
+    root: INFO
+
+swagger:
+  cors:
+    allowedOrigins: http://localhost:10020, http://localhost:3000
+  host: localhost:10020

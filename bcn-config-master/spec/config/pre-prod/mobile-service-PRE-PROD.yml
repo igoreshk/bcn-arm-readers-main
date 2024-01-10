@@ -1,0 +1,7 @@
+spring:
+  kafka:
+    property:
+      bootstrap.servers: ECSE00500aca.epam.com:9092
+      zookeeper.server: ECSE00500aca.epam.com:2181
+    consumer:
+      bootstrap-servers: ECSE00500aca.epam.com:9092

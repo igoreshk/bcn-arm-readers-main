@@ -1,0 +1,20 @@
+server:
+  ssl:
+    enabled: false
+
+spring:
+  resources:
+    chain:
+      enabled: true
+
+endpoints:
+  cors:
+    origins: http://bcn-dev.lab.epam.com, http://qa.bcn.lab.epam.com, http://localhost:3000
+    enabled: true
+
+security:
+  oauth2:
+    client:
+      preEstablishedRedirectUri: http://bcn-dev.lab.epam.com/api/v1/login
+      accessTokenUri: https://access-staging.epam.com/auth/realms/plusx/protocol/openid-connect/token
+      useCurrentUri: false

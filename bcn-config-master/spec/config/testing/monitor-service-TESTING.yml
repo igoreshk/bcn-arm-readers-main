@@ -1,0 +1,3 @@
+spring:
+  kafka:
+    bootstrap-servers: ecse0050067c.epam.com:9092

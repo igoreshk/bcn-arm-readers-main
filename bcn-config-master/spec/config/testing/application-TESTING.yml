@@ -1,0 +1,23 @@
+beacons:
+  sso:
+    registeredRedirectUri: http://tst.bcn.lab.epam.com/api/v1/login
+    userAuthorizationUri: http://tst.bcn.lab.epam.com/api/v1/oauth/authorize
+
+spring.data.mongodb:
+  host: ecse0050040f.epam.com
+  port: 32018
+
+eureka:
+  instance:
+    prefer-ip-address: true
+
+logging:
+  file:
+    name: logs/${spring.application.name}.log
+  level:
+    root: INFO
+
+swagger:
+  cors:
+    allowedOrigins: http://tst.bcn.lab.epam.com, http://localhost:3000
+  host: tst.bcn.lab.epam.com

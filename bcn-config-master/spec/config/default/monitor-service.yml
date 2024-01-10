@@ -1,0 +1,41 @@
+beacons:
+  cloud:
+    trilateration:
+      coefficientOne: 1.20342
+      coefficientTwo: 6.17009
+      coefficientThree: 0.46058
+
+spring:
+  application:
+    name: monitor-service
+  kafka:
+    bootstrap-servers: ECSE00500096.epam.com:9092
+    property:
+      retries: 0
+      batch.size: 16384
+      linger.ms: 1
+      buffer.memory: 33554432
+      zookeeper.nodes: /brokers/ids
+    consumer:
+      auto-offset-reset: latest
+      group-id:
+        reader: reader
+        mobile: mobile
+
+server:
+  port: 10080
+
+spring.data.mongodb:
+  database: monitor
+  username: ${mongo-username}
+  password: ${mongo-password}
+  auto-index-creation: true
+
+security:
+  oauth2:
+    client:
+      accessTokenUri: http://uaa-service/api/v1/oauth/token
+      grant-type: client_credentials
+
+history:
+  period: 14

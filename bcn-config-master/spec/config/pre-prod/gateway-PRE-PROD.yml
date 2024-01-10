@@ -1,0 +1,15 @@
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+
+endpoints:
+  cors:
+    origins: http://localhost:3000, https://bcn.lab.epam.com
+    enabled: true
+
+security:
+  oauth2:
+    client:
+      preEstablishedRedirectUri: https://bcn.lab.epam.com/api/v1/login
+      accessTokenUri: https://access-staging.epam.com/auth/realms/plusx/protocol/openid-connect/token
+      useCurrentUri: false

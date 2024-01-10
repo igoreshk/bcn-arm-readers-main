@@ -1,0 +1,25 @@
+feign.client.config.default.connectTimeout: 60000
+feign.client.config.default.readTimeout: 70000
+
+security:
+  oauth2:
+    client:
+      clientId: ${security-oauth2-client-id}
+      clientSecret: ${security-oauth2-client-secret}
+    resource:
+      loadBalanced: true
+      userInfoUri: http://uaa-service/api/v1/oauth/me
+      prefer-token-info: false
+      id: https://bcn.lab.epam.com
+
+server:
+  servlet:
+    session:
+      timeout: 180m
+      cookie:
+        max-age: 180m
+
+eureka:
+  client:
+    region: default
+    registry-fetch-interval-seconds: 10

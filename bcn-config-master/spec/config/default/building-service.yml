@@ -1,0 +1,30 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+  application:
+    name: building-service
+
+server:
+  port: 10040
+  session:
+    cookie:
+      secure: true
+
+spring.data.mongodb:
+  database: building
+  username: ${mongo-username}
+  password: ${mongo-password}
+  auto-index-creation: true
+
+security:
+  oauth2:
+    client:
+      accessTokenUri: http://uaa-service/api/v1/oauth/token
+      grant-type: client_credentials
+
+beacons:
+  cloud:
+    building:
+      valid-image-formats: jpeg, jpg, svg, png

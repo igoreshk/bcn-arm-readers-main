@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: registry-service
+
+server:
+  port: 10005
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false

@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: mobile-service
+  kafka:
+    property:
+      retries: 0
+      batch.size: 16384
+      linger.ms: 1
+      buffer.memory: 33554432
+      zookeeper.nodes: /brokers/ids
+
+server:
+  port: 10070
+
+security:
+  oauth2:
+    client:
+      accessTokenUri: http://uaa-service/api/v1/oauth/token
+      grant-type: client_credentials

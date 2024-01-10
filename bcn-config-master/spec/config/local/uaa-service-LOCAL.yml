@@ -1,0 +1,5 @@
+eureka:
+  client:
+    allow-redirects: true
+  instance:
+    instance-id: uaa-service-app.local.svc.cluster.local

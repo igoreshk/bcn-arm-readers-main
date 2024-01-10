@@ -1,0 +1,43 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 1MB
+  application:
+    name: uaa-service
+
+server:
+  port: 10035
+  session:
+    cookie:
+      name: AUTH_SERVER_SESSIONID
+
+spring.data.mongodb:
+  database: user
+  username: ${mongo-username}
+  password: ${mongo-password}
+  auto-index-creation: true
+
+beacons:
+  cloud:
+    security:
+      keyStorePassword: ${beacons-cloud-security-keyStorePassword}
+      keyStoreEncodedFile: ${beacons-cloud-security-keyStoreFile}
+      alias: mytest
+      jwt:
+        keyValue: ${beacons-cloud-security-jwt-keyValue}
+
+security:
+  oauth2:
+    client:
+      accessTokenUri: http://uaa-service/api/v1/oauth/token
+      grant-type: client_credentials
+    resource:
+      jwt:
+        keyValue: ${security-oauth2-resource-jwt-keyValue}
+
+telescope-api:
+  account:
+    host: https://telescope-api.epam.com
+    login: ${telescope-api-account-login}
+    password: ${telescope-api-account-password}

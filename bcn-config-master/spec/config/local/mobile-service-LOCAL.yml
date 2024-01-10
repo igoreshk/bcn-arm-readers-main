@@ -1,0 +1,7 @@
+spring:
+  kafka:
+    property:
+      bootstrap.servers: localhost:9092
+      zookeeper.server: localhost:2181
+    consumer:
+      bootstrap-servers: localhost:9092

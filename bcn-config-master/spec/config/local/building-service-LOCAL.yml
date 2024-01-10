@@ -1,0 +1,8 @@
+server:
+  session:
+    cookie:
+      secure: false
+
+eureka:
+  instance:
+    instance-id: building-service-app.local.svc.cluster.local
