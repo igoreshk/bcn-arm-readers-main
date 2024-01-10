@@ -1,0 +1,186 @@
+image: ecse00500096.epam.com:5000/gradle-7.2              #ecse00500096.epam.com:5000/gradle6.5_docker
+
+stages:
+  - build
+  - build-images
+  - trigers
+
+#1-1
+build_admin_web:
+  stage: build
+  tags:
+    - bcnadm
+  script:
+    - cd beacon-admin-web
+    - rm -rfv node_modules
+    - rm .env
+    - cp .env.dev .env
+    - gradle build -g /cache/.gradle
+  allow_failure: false
+
+#1-2
+build_admin_web_for_preprod:
+  stage: build
+  tags:
+    - bcnadm
+  script:
+    - cd beacon-admin-web
+    - rm -rfv node_modules
+    - rm .env
+    - cp .env.pre-prod .env
+    - gradle build -g /cache/.gradle
+  allow_failure: false
+
+#1-3
+build_admin_web_for_testing:
+  stage: build
+  tags:
+    - bcnadm
+  script:
+    - cd beacon-admin-web
+    - rm -rfv node_modules
+    - rm .env
+    - cp .env.testing .env
+    - gradle checkStyleSheets checkMain checkTest test build -x test -g /cache/.gradle
+  allow_failure: false
+
+
+####
+####   STAGE - BUILD IMAGES
+####
+
+#1-1
+image_admin_web:
+  stage: build-images
+  tags:
+    - bcnadm
+  script:
+    - cd beacon-admin-web
+    - rm -rfv node_modules
+    - rm .env
+    - cp .env.dev .env
+    - gradle build -g /cache/.gradle
+    - tar -cvf front-end.tar ./build
+    - ls
+    - docker login ecse00500096.epam.com:5000 -u epmlstr -p $reg_pass
+    #admin-web-dev
+    - docker build -f beacon-admin-web.Dockerfile --build-arg artifact_file=front-end --build-arg nginx_conf=nginx-default --build-arg CI_COMMIT_SHORT_SHA=$CI_COMMIT_SHORT_SHA --build-arg CI_COMMIT_REF_NAME=$CI_COMMIT_REF_NAME . -t ecse00500096.epam.com:5000/beacon-admin-web:$CI_BUILD_REF_SLUG 
+    - docker push ecse00500096.epam.com:5000/beacon-admin-web:$CI_BUILD_REF_SLUG
+  rules:
+    - if: '$CI_MERGE_REQUEST_EVENT_TYPE == "detached"'
+      when: never
+    - if: '$CI_COMMIT_REF_SLUG == "dev"'
+      when: always
+    - if: '$CI_MERGE_REQUEST_ID != ""'
+      when: manual
+    - if: '$CI_COMMIT_REF_SLUG != "dev"'
+      when: manual
+  allow_failure: true
+
+#1-2
+image_admin_web_for_preprod:
+  stage: build-images
+  tags:
+    - bcnadm
+  script:
+    - cd beacon-admin-web
+    - rm -rfv node_modules
+    - rm .env
+    - cp .env.pre-prod .env
+    - gradle build -g /cache/.gradle
+    - tar -cvf front-end-for-preprod.tar ./build
+    - ls
+    - docker login ecse00500096.epam.com:5000 -u epmlstr -p $reg_pass   
+  #admin-web-preprod
+    - docker build -f beacon-admin-web.Dockerfile --build-arg artifact_file=front-end-for-preprod --build-arg nginx_conf=nginx-default-preprod --build-arg CI_COMMIT_SHORT_SHA=$CI_COMMIT_SHORT_SHA --build-arg CI_COMMIT_REF_NAME=$CI_COMMIT_REF_NAME . -t ecse00500096.epam.com:5000/beacon-admin-web-preprod:$CI_BUILD_REF_SLUG
+    - docker push ecse00500096.epam.com:5000/beacon-admin-web-preprod:$CI_BUILD_REF_SLUG
+  rules:
+    - if: '$CI_MERGE_REQUEST_EVENT_TYPE == "detached"'
+      when: never
+    - if: '$CI_COMMIT_REF_SLUG == "dev"'
+      when: always
+    - if: '$CI_MERGE_REQUEST_ID != ""'
+      when: manual
+    - if: '$CI_COMMIT_REF_SLUG != "dev"'
+      when: manual
+  allow_failure: true
+
+#1-3
+image_admin_web_for_testing:
+  stage: build-images
+  tags:
+    - bcnadm
+  script:
+    - cd beacon-admin-web
+    - rm -rfv node_modules
+    - rm .env
+    - cp .env.testing .env
+    - gradle checkStyleSheets checkMain checkTest test build -x test -g /cache/.gradle
+    - tar -cvf front-end-for-testing.tar ./build
+    - ls    
+    - docker login ecse00500096.epam.com:5000 -u epmlstr -p $reg_pass   
+  #admin-web-testing
+    - docker build -f beacon-admin-web.Dockerfile --build-arg artifact_file=front-end-for-testing --build-arg nginx_conf=nginx-default-testing --build-arg CI_COMMIT_SHORT_SHA=$CI_COMMIT_SHORT_SHA --build-arg CI_COMMIT_REF_NAME=$CI_COMMIT_REF_NAME . -t ecse00500096.epam.com:5000/beacon-admin-web-testing:$CI_BUILD_REF_SLUG
+    - docker push ecse00500096.epam.com:5000/beacon-admin-web-testing:$CI_BUILD_REF_SLUG
+  rules:
+    - if: '$CI_MERGE_REQUEST_EVENT_TYPE == "detached"'
+      when: never
+    - if: '$CI_COMMIT_REF_SLUG == "dev"'
+      when: always
+    - if: '$CI_MERGE_REQUEST_ID != ""'
+      when: manual
+    - if: '$CI_COMMIT_REF_SLUG != "dev"'
+      when: manual
+  allow_failure: true
+
+
+    # trigger Gitlab-ci to start  update Testing
+Deploy-to-testing:
+  image: ecse00500096.epam.com:5000/ansible-runner2
+  stage: trigers
+  tags:
+  - bcnadm
+  script: 
+  - mkdir -p  ~/.kube/
+  - mkdir -p /var/ansible-runner/
+  - cp ./kubernetes/testing/templates/*.j2 /var/ansible-runner/
+  - cat $based_40f_config | base64 -d > ~/.kube/config
+  - kubectl get pods -n testing
+  - cd /var/ansible-runner/
+  - git clone https://$Ansible_user:$Ansible_token@git.epam.com/epm-lstr/epm-lstr-bcn/bcn-automation-ansible.git --branch master
+  - ls -la
+  - cd ./bcn-automation-ansible/ansible-runner/
+  - mkdir -p /var/ansible-runner/bcn-automation-ansible/ansible-runner/templates/
+  - cp /var/ansible-runner/*.j2 /var/ansible-runner/bcn-automation-ansible/ansible-runner/templates/
+  - ansible-playbook -e branch=$CI_BUILD_REF_SLUG -e namespace=testing --skip-tags "back" -i inventory deploy-order.yml
+  rules:
+  - if: '$CI_MERGE_REQUEST_EVENT_TYPE == "detached"'
+    when: never
+  - if: '$CI_MERGE_REQUEST_ID != ""'
+    when: manual
+  - if: '$CI_COMMIT_REF_SLUG != "dev"'
+    when: manual 
+  allow_failure: true
+  
+Deploy-to-DEV:
+  image: ecse00500096.epam.com:5000/ansible-runner2
+  stage: trigers
+  tags:
+  - bcnadm
+  script: 
+  - mkdir -p  ~/.kube/
+  - mkdir -p /var/ansible-runner/
+  - cp ./kubernetes/dev/templates/*.j2 /var/ansible-runner/
+  - cat $based_40f_config | base64 -d > ~/.kube/config
+  - kubectl get pods -n dev
+  - cd /var/ansible-runner/
+  - git clone https://$Ansible_user:$Ansible_token@git.epam.com/epm-lstr/epm-lstr-bcn/bcn-automation-ansible.git --branch master
+  - ls -la
+  - cd ./bcn-automation-ansible/ansible-runner/
+  - mkdir -p /var/ansible-runner/bcn-automation-ansible/ansible-runner/templates/
+  - cp /var/ansible-runner/*.j2 /var/ansible-runner/bcn-automation-ansible/ansible-runner/templates/
+  - ansible-playbook -e branch=$CI_BUILD_REF_SLUG -e namespace=dev --skip-tags "back" -i inventory deploy-order.yml
+  dependencies: []
+  when: always
+  only:
+  - dev

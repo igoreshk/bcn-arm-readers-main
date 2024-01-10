@@ -1,0 +1,58 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false
+      }
+    ],
+    "@babel/preset-react",
+    "@babel/preset-flow"
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        "@babel/preset-env"
+      ],
+      "plugins": [
+        [
+          "@babel/plugin-transform-runtime",
+          {
+            "corejs": 2
+          }
+        ]
+      ]
+    }
+  },
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./src"
+        ],
+        "alias": {
+          "css": "./src/css",
+          "actions": "./src/actions",
+          "config": "./src/config",
+          "reducers": "./src/reducers",
+          "service": "./src/service",
+          "thunk": "./src/thunk",
+          "transformers": "./src/transformers",
+          "utils": "./src/utils",
+          "view": "./src/view",
+          "src": "./src/"
+        }
+      }
+    ],
+    "@babel/plugin-proposal-class-properties",
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "corejs": 2,
+        "useESModules": true
+      }
+    ],
+    "@babel/plugin-proposal-throw-expressions"
+  ]
+}
