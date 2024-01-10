@@ -1,0 +1,55 @@
+export const DEFAULT_INITIAL_PAGE = '/buildings';
+export const ID = '/:id';
+export const DELETE = '/delete';
+export const EDIT = '/edit';
+export const NEW = '/new';
+export const NEW_BUILDING = '/new/building';
+export const BUILDINGS_LIST = '/buildings';
+export const BUILDINGS = '/buildings';
+export const BUILDING_NEW = BUILDINGS_LIST + NEW;
+export const BUILDING_DIALOG = BUILDINGS_LIST + ID;
+export const BUILDING_DELETE_DIALOG = BUILDINGS_LIST + ID + DELETE;
+export const USERS_LIST = '/users';
+export const USERS_DELETE_DIALOG = USERS_LIST + ID + DELETE;
+export const CURRENT = '/current';
+export const CREATE_USER = USERS_LIST + NEW;
+export const USER_DIALOG = USERS_LIST + ID;
+export const VISITORS_LIST = '/visitors';
+export const CREATE_VISITOR = VISITORS_LIST + NEW;
+export const VISITOR_DIALOG = VISITORS_LIST + ID;
+export const VISITORS_DELETE_DIALOG = VISITORS_LIST + ID + DELETE;
+export const WELCOME_PAGE = '/';
+export const LEVEL_ID = '/:level';
+export const BUILDING_ID = '/:building';
+export const BEACON_ID = '/:beacon';
+export const READER_ID = '/:reader';
+export const EDGE_ID = '/:edge';
+export const AREA_ID = '/:area';
+export const AREAS = '/areas';
+export const READERS = '/readers';
+export const ROUTING = '/routing';
+export const BEACONS = '/beacons';
+export const SCALING = '/scaling';
+export const MONITORING = '/monitoring';
+export const DRAWING = '/drawing';
+export const MAP = '/map';
+export const LEVELS = '/levels';
+export const LAYER = '/:layer';
+export const EDIT_MODE = '/:edit?';
+
+export const INITIAL_PAGE = {
+  'admin': USERS_LIST,
+  'operator': BUILDINGS_LIST
+};
+export const EMAIL = '/email';
+export const LOGIN = '/login';
+export const PASSWORD = '/password';
+export const USER = '/user';
+export const MESSAGES = '/messages';
+export const PROFILE = '/profile';
+export const USER_PROFILE = USER + PROFILE;
+export const USER_MESSAGES = USER + MESSAGES;
+export const WATCHERS_LIST = '/watchers';
+export const CREATE_WATCHER = WATCHERS_LIST + NEW;
+export const WATCHER_DIALOG = WATCHERS_LIST + ID;
+export const WATCHERS_DELETE_DIALOG = WATCHERS_LIST + ID + DELETE;

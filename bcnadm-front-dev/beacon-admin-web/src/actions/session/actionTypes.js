@@ -1,0 +1,7 @@
+export const SHOW_LOADING = 'SHOW_LOADING';
+export const HIDE_LOADING = 'HIDE_LOADING';
+
+export const ADD_POPUP_TEXT = 'ADD_POPUP_TEXT';
+export const REMOVE_POPUP_TEXT = 'REMOVE_POPUP_TEXT';
+
+export const CHECK_SESSION = 'CHECK_SESSION';
