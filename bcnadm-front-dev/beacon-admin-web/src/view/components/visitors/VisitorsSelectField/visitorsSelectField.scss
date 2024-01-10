@@ -1,0 +1,39 @@
+.secondGroup .visitorSelectFormControl {
+  width: 250px;
+
+  @media screen and (max-width: 625px) {
+    width: 300px;
+    margin-bottom: 20px;
+  }
+
+  .visitorsSelect {
+    color: #ffffff;
+    font-size: 14px;
+  }
+
+  .select {
+    padding: 6px 0;
+    margin-left: 25px;
+    display: flex;
+    align-items: center;
+  }
+
+  .selectIcon {
+    color: #ffffff;
+    margin-right: 10px;
+  }
+}
+
+.visitorItem {
+  .avatar {
+    background: transparent;
+    object-fit: cover;
+  }
+
+  .name {
+    max-width: 160px;
+    margin-left: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

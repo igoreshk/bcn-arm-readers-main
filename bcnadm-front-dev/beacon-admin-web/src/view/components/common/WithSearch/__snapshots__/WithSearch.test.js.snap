@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WithSearch Should match snapshot 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "filter": "key_1",
+      "setFilter": [Function],
+    }
+  }
+>
+  <ConsumerComponent
+    data={
+      Array [
+        Object {
+          "key_1": "key_1",
+          "key_2": "key_2",
+          "key_3": "key_3",
+        },
+      ]
+    }
+    filter="key_1"
+    keys={
+      Array [
+        "key_1",
+        "key_2",
+        "key_3",
+      ]
+    }
+    source={
+      Array [
+        Object {
+          "key_1": "key_1",
+          "key_2": "key_2",
+          "key_3": "key_3",
+        },
+        Object {
+          "key_1": "key_2",
+          "key_2": "key_3",
+          "key_3": "key_4",
+        },
+      ]
+    }
+  />
+</ContextProvider>
+`;

@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WatchersTable function tests Check matching snapshot 1`] = `
+<WithStyles(ForwardRef(Table))
+  className="watchersTable"
+>
+  <WithStyles(ForwardRef(TableHead))>
+    <WatchersTableHeader
+      className="header"
+      sortedBy={null}
+      toggleFilter={[Function]}
+      toggleSortWatchersByField={[Function]}
+      translate={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              "common.remove",
+            ],
+            Array [
+              "common.remove",
+            ],
+            Array [
+              "common.remove",
+            ],
+            Array [
+              "common.remove",
+            ],
+            Array [
+              "common.remove",
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+    />
+  </WithStyles(ForwardRef(TableHead))>
+  <WithStyles(ForwardRef(TableBody)) />
+</WithStyles(ForwardRef(Table))>
+`;

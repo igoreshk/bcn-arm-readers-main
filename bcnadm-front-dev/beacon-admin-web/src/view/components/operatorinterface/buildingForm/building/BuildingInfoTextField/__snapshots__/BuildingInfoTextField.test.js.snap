@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BuildingInfoTextField Check matching snapshot 1`] = `
+<WithStyles(ForwardRef(TextField))
+  error={false}
+  fullWidth={true}
+  helperText={false}
+  label="label"
+  margin="normal"
+  placeholder="label"
+/>
+`;

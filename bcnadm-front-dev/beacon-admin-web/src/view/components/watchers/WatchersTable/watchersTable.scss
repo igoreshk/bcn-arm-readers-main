@@ -1,0 +1,93 @@
+.visitorsTable {
+  table-layout: fixed;
+
+  thead {
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
+  }
+
+  tbody {
+    cursor: pointer;
+  }
+
+  .filter {
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
+  }
+  
+  .uuid {
+    @media screen and (min-width: 801px) {
+      width: 250px;
+    }
+  }
+
+  .icon {
+    @media screen and (min-width: 801px) {
+      width: 50px;
+    }
+  }
+
+  .remove {
+    @media screen and (min-width: 801px) {
+      width: 120px;
+    }
+  }
+
+  tr {
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+
+    @media screen and (max-width: 800px) {
+      display: block;
+      padding: 5px;
+      margin-bottom: 10px;
+      height: auto;
+    }
+
+    &:last-child {
+      padding: 10px;
+    }
+
+    td, th {
+      height: 40px;
+      padding: 10px;
+      border-bottom: none;
+    }
+
+    td {
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      @media screen and (max-width: 800px) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    td:before {
+      content: "";
+      display: none;
+            
+      @media screen and (max-width: 800px) {
+        display: block;
+        content: attr(data-label);
+        color: rgb(158, 158, 158);
+        margin-right: 20px;
+      }
+    }
+
+    .removeButtonText {
+      @media screen and (max-width: 800px) {
+        font-size: 12px;
+      }
+    }
+  }
+        
+  tr:first-child {
+    @media screen and (max-width: 800px) {
+      margin-top: 10px;
+    }
+  }
+}

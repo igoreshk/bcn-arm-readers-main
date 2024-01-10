@@ -1,0 +1,15 @@
+.errorFallback {
+   background-color: #ffffff;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding-bottom: 20px;
+   z-index: 99;
+   .repeatButton {
+      height: 25px;
+      background-color: #39c2d7;
+      color: #ffffff;
+      cursor: pointer;
+      border-color: #ffffff;
+   }
+}

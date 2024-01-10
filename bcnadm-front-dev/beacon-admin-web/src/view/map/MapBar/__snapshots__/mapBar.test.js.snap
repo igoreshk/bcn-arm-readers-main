@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapBar should match snapshot 1`] = `
+<div>
+  <div
+    className="actions"
+  >
+    <div
+      className="firstGroup"
+    >
+      <span
+        className="levelNumber"
+      />
+      <withRouter(Connect(LocalizedComponent)) />
+    </div>
+    <div
+      className="secondGroup"
+    >
+      <LocalizedComponent
+        levelNumber={1}
+        selectedMapProviderName="Google"
+        translate={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "building.level",
+                Object {
+                  "value": 1,
+                },
+              ],
+              Array [
+                "building.level",
+                Object {
+                  "value": 1,
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+      />
+      <withRouter(ActionButtonsGroup)
+        clear={[MockFunction]}
+        toEdit={[MockFunction]}
+        translate={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "building.level",
+                Object {
+                  "value": 1,
+                },
+              ],
+              Array [
+                "building.level",
+                Object {
+                  "value": 1,
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`MapBar with buildingSizeForScaleMode prop should match snapshot 1`] = `
+<div>
+  <div
+    className="actions"
+  >
+    <div
+      className="firstGroup"
+    >
+      <span
+        className="levelNumber"
+      />
+      <withRouter(Connect(LocalizedComponent)) />
+    </div>
+    <div
+      className="secondGroup"
+    >
+      <LocalizedComponent
+        levelNumber={1}
+        selectedMapProviderName="Google"
+        translate={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "building.level",
+                Object {
+                  "value": 1,
+                },
+              ],
+              Array [
+                "building.level",
+                Object {
+                  "value": 1,
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+      />
+      <withRouter(ActionButtonsGroup)
+        clear={[MockFunction]}
+        toEdit={[MockFunction]}
+        translate={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "building.level",
+                Object {
+                  "value": 1,
+                },
+              ],
+              Array [
+                "building.level",
+                Object {
+                  "value": 1,
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+      />
+    </div>
+  </div>
+  <LocalizedComponent
+    height={100}
+    width={200}
+  />
+</div>
+`;

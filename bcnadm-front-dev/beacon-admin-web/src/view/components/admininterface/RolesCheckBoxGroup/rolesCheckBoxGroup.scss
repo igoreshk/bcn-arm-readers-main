@@ -1,0 +1,33 @@
+.rolesCheckBoxGroup {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  max-height: 250px;
+
+  .formControl {
+    min-height: 40px;
+
+    .label {
+      overflow: hidden;
+    }
+
+    .role {
+      display: flex;
+      align-items: center;
+    }
+
+    .avatar {
+      background: transparent;
+      margin-left: 5px;
+      width: 24px;
+      height: 24px;
+    }
+    
+    .roleAliasText {
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-left: 10px;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+div .levelsSelectFormControl {
+  width: 250px;
+  background-color: rgb(107, 106, 108);
+  border-radius: 20px;
+  margin-left: 20px;
+
+  @media screen and (max-width: 700px) {
+    margin-left: 0;
+  }
+
+  .selectedItem {
+    display: flex;
+    color: #ffffff;
+    margin-left: 20px;
+
+    .iconContainer {
+      display: flex;
+    }
+    
+    .icon {
+      height: 19px;
+      width: 19px;
+    }
+
+    .name {
+      margin-left: 15px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .selectIcon {
+    color: #ffffff;
+    margin-right: 10px;
+  }
+}
+
+ul .buildingMenuItem, ul .buttonAddBuilding {
+  padding-top: 20px;
+  padding-bottom: 20px; 
+}
+
+ul .buttonAddBuilding:hover {
+  background-color: unset; 
+  cursor: initial;
+}

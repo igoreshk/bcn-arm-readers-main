@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WatchersSelectField Check matching snapshot 1`] = `
+<WithStyles(ForwardRef(FormControl))
+  className="watcherSelectFormControl"
+>
+  <WithStyles(ForwardRef(Select))
+    classes={
+      Object {
+        "icon": "selectIcon",
+        "root": "visitorsSelect",
+        "select": "select",
+      }
+    }
+    disableUnderline={true}
+    displayEmpty={true}
+    multiple={true}
+    onChange={[Function]}
+    renderValue={[Function]}
+    value={
+      Array [
+        Object {
+          "id": "test",
+        },
+      ]
+    }
+  >
+    <WithStyles(ForwardRef(MenuItem))
+      disabled={true}
+      value=""
+    >
+      <span>
+        Select Watchers
+      </span>
+    </WithStyles(ForwardRef(MenuItem))>
+    <WithStyles(ForwardRef(MenuItem))
+      className="visitorItem"
+      key="5fc8bf048dfe557a0c9a9191"
+      name="watcher"
+      value={
+        Object {
+          "entityId": "5fc8bf048dfe557a0c9a9191",
+          "id": "5fc8bf048dfe557a0c9a9191",
+          "visitorsId": Array [
+            "12324",
+          ],
+        }
+      }
+    >
+      <span
+        className="name"
+      />
+    </WithStyles(ForwardRef(MenuItem))>
+  </WithStyles(ForwardRef(Select))>
+</WithStyles(ForwardRef(FormControl))>
+`;

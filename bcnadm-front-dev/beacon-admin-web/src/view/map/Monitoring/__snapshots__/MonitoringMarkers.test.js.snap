@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MonitoringMarkers Check matching snapshot 1`] = `
+<WithStyles(withRouter(Connect(LocalizedComponent)))
+  markerHandler={
+    GoogleMarkerHandler {
+      "createMarker": [Function],
+      "createPolyline": [Function],
+      "createScalingPolyline": [Function],
+      "removeClickListener": [Function],
+      "removeDragEndListener": [Function],
+      "removeDragStartListener": [Function],
+      "removeEdgeFromMap": [Function],
+      "removeEdgeMovingListener": [Function],
+      "removeEdgeSeparateListener": [Function],
+      "removeMapListener": [Function],
+      "removeMapRightClickListener": [Function],
+      "removeMarkerFromMap": [Function],
+      "removeRightClickListener": [Function],
+      "removeScaleEdgeListener": [Function],
+      "removeVertexClickListener": [Function],
+      "setClickListener": [Function],
+      "setDragEndListener": [Function],
+      "setDragStartListener": [Function],
+      "setDraggable": [Function],
+      "setEdgeInfoTooltip": [Function],
+      "setEdgeMovingListener": [Function],
+      "setEdgeOnMap": [Function],
+      "setEdgeSeparateListener": [Function],
+      "setInfoTooltip": [Function],
+      "setMapListener": [Function],
+      "setMapRightClickListener": [Function],
+      "setMarkerOnMap": [Function],
+      "setRightClickListener": [Function],
+      "setScaleEdgeListener": [Function],
+      "setUndraggable": [Function],
+      "setVertexClickListener": [Function],
+      "setVertexIcon": [Function],
+    }
+  }
+  setListeners={[Function]}
+  transformer={[Function]}
+  translate={[MockFunction]}
+/>
+`;

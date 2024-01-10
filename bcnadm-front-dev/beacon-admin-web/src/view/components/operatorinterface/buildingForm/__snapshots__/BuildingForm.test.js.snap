@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BuildingForm check that the necessary steps are rendered when changing buildind info 1`] = `
+<buildingInfoForm
+  allowedToProceed={false}
+  closeDialog={[MockFunction]}
+  next={[Function]}
+  translate={[MockFunction]}
+/>
+`;
+
+exports[`BuildingForm check that the necessary steps are rendered when changing level maps 1`] = `
+<LevelsMaps
+  allowedToProceed={true}
+  back={[Function]}
+  closeDialog={[MockFunction]}
+  levels={Array []}
+  removeLevelField={[Function]}
+  translate={[MockFunction]}
+  updateLevels={[Function]}
+/>
+`;

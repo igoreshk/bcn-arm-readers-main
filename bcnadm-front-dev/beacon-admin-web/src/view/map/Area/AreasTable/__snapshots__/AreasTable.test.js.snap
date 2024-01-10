@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AreasTable Should match snapshot 1`] = `
+<div
+  className="areasTable"
+>
+  <div
+    className="header"
+  >
+    <span
+      className="levelNumber"
+    >
+      <br />
+      (
+      )
+    </span>
+    <SearchPanel
+      className="areasSearch"
+      textFieldRest={
+        Object {
+          "InputProps": Object {
+            "disableUnderline": true,
+          },
+          "fullWidth": true,
+        }
+      }
+    />
+  </div>
+  <WithStyles(ForwardRef(Table))
+    className="table"
+  >
+    <WithStyles(ForwardRef(TableHead))>
+      <AreasTableHeader
+        isAreasLoading={false}
+        toggleSortAreasByField={[MockFunction]}
+        translate={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "operator.listOfAreas",
+              ],
+              Array [
+                "building.level",
+                Object {
+                  "value": 1,
+                },
+              ],
+              Array [
+                "areas.name",
+              ],
+              Array [
+                "areas.description",
+              ],
+              Array [
+                "areas.name",
+              ],
+              Array [
+                "areas.description",
+              ],
+              Array [
+                "areas.name",
+              ],
+              Array [
+                "areas.description",
+              ],
+              Array [
+                "admin.close",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+      />
+    </WithStyles(ForwardRef(TableHead))>
+    <WithStyles(ForwardRef(TableBody))>
+      <WithStyles(ForwardRef(TableRow))
+        key="5bf2afcc31d7221230a09ea4"
+      >
+        <WithStyles(ForwardRef(TableCell))>
+          FIRST NAME
+        </WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(TableCell))>
+          FIRST DESCRIPTION
+        </WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(TableCell))
+          className="editColumn"
+        >
+          <Memo(ForwardRef(EditIcon))
+            className="editIcon"
+          />
+        </WithStyles(ForwardRef(TableCell))>
+      </WithStyles(ForwardRef(TableRow))>
+      <WithStyles(ForwardRef(TableRow))
+        key="5bf2afbc31d7221230a09ea3"
+      >
+        <WithStyles(ForwardRef(TableCell))>
+          SECOND NAME
+        </WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(TableCell))>
+          SECOND DESCRIPTION
+        </WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(TableCell))
+          className="editColumn"
+        >
+          <Memo(ForwardRef(EditIcon))
+            className="editIcon"
+          />
+        </WithStyles(ForwardRef(TableCell))>
+      </WithStyles(ForwardRef(TableRow))>
+      <WithStyles(ForwardRef(TableRow))
+        key="5beea89b0bd42e1fb05bc0ef"
+      >
+        <WithStyles(ForwardRef(TableCell))>
+          THIRD NAME
+        </WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(TableCell))>
+          THIRD DESCRIPTION
+        </WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(TableCell))
+          className="editColumn"
+        >
+          <Memo(ForwardRef(EditIcon))
+            className="editIcon"
+          />
+        </WithStyles(ForwardRef(TableCell))>
+      </WithStyles(ForwardRef(TableRow))>
+    </WithStyles(ForwardRef(TableBody))>
+  </WithStyles(ForwardRef(Table))>
+  <div
+    className="closeButtonContainer"
+    id="buttonRoot"
+  >
+    <WithStyles(ForwardRef(Button))
+      color="primary"
+      onClick={[MockFunction]}
+    />
+  </div>
+</div>
+`;

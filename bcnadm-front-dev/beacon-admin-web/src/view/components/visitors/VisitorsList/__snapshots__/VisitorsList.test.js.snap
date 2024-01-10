@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VisitorsList Check matching snapshot 1`] = `
+<div
+  className=""
+>
+  <Connect(CustomAppBar)
+    title={<withRouter(LocalizedComponent) />}
+  />
+  <ErrorBoundary
+    FallbackComponent={[Function]}
+  >
+    <withRouter(Connect(LocalizedComponent))
+      updated={false}
+    />
+  </ErrorBoundary>
+</div>
+`;

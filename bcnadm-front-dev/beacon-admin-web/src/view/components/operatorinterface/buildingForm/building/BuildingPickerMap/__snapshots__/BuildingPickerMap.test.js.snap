@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BuildingPickerMap Check matching snapshot 1`] = `
+<Map
+  center={
+    Object {
+      "lat": 59.887973,
+      "lng": 30.32818,
+    }
+  }
+  centerAroundCurrentLocation={false}
+  className="building-picker-map"
+  containerStyle={Object {}}
+  initialCenter={
+    Object {
+      "lat": 59.887973,
+      "lng": 30.32818,
+    }
+  }
+  item={true}
+  onClick={[Function]}
+  style={Object {}}
+  visible={true}
+  xs={12}
+  zoom={14}
+>
+  <Marker
+    name="Marker"
+    position={
+      Object {
+        "lat": 59.887973,
+        "lng": 30.32818,
+      }
+    }
+  />
+</Map>
+`;

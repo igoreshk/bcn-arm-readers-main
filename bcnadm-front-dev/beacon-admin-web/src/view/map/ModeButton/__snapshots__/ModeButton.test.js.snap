@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mock snapshot for ModeButton 1`] = `
+<Fragment>
+  <WithStyles(ForwardRef(IconButton))
+    data-for="buttonId"
+    data-tip={true}
+    onClick={[MockFunction]}
+    style={
+      Object {
+        "backgroundColor": "#39C2D7",
+        "borderRadius": "3px",
+        "boxShadow": "1px 2px 2px #999999",
+        "height": "36px",
+        "margin": "1px",
+        "opacity": "1",
+        "padding": "0px",
+        "width": "36px",
+      }
+    }
+  >
+    <div />
+  </WithStyles(ForwardRef(IconButton))>
+  <ReactTooltip
+    clickable={false}
+    effect="solid"
+    id="buttonId"
+    insecure={true}
+    place="bottom"
+    resizeHide={true}
+    type="light"
+    wrapper="div"
+  >
+    <span
+      style={
+        Object {
+          "fontSize": "12px",
+          "fontWeight": "500",
+          "lineHeight": "2.3",
+        }
+      }
+    >
+      tooltip
+    </span>
+  </ReactTooltip>
+</Fragment>
+`;

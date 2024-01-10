@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AreasTableContainer Should match snapshot 1`] = `
+<WithSearch(AreasTable)
+  close={[MockFunction]}
+  editArea={[Function]}
+  isAreasLoading={false}
+  keys={
+    Array [
+      "name",
+      "description",
+    ]
+  }
+  levelNumber={2}
+  sortedBy="BY_NAME_ASC"
+  source={
+    Array [
+      Object {
+        "description": "FIRST DESCRIPTION",
+        "entityId": "5bf2afcc31d7221230a09ea4",
+        "image": "blob:http://example.com/1",
+        "levelId": "5beea5a30bd42e1fb05bc0ea",
+        "name": "FIRST NAME",
+      },
+      Object {
+        "description": "SECOND DESCRIPTION",
+        "entityId": "5bf2afbc31d7221230a09ea3",
+        "image": "blob:http://example.com/2",
+        "levelId": "5beea5a30bd42e1fb05bc0ea",
+        "name": "SECOND NAME",
+      },
+      Object {
+        "coordinate": Object {
+          "latitude": 0.07707593500532493,
+          "longitude": -0.0185394287109375,
+        },
+        "description": "THIRD DESCRIPTION",
+        "entityId": "5beea89b0bd42e1fb05bc0ef",
+        "image": "blob:http://example.com/3",
+        "levelId": "5beea5a30bd42e1fb05bc0ea",
+        "name": "THIRD NAME",
+      },
+    ]
+  }
+  toggleSortAreasByField={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "name",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  translate={[MockFunction]}
+/>
+`;

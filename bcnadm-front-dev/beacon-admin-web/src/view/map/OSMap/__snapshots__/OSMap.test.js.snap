@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OSMap test cases Snapshot for OSMap component 1`] = `
+<OSMap
+  currentLevel={
+    Object {
+      "scaleDistance": 40,
+      "scaleEndLatitude": 40,
+      "scaleEndLongitude": 40,
+      "scaleStartLatitude": 50,
+      "scaleStartLongitude": 30,
+    }
+  }
+  hideLoadingScreen={[MockFunction]}
+  history={
+    Object {
+      "push": [MockFunction],
+    }
+  }
+  loading={false}
+  location={
+    Object {
+      "hash": "",
+      "key": "zjzhge",
+      "pathname": "/buildings/5dd3c1d2f79fb2000125f0c0/levels/5dd3c219f79fb2000125f0c1/beacons",
+      "search": "",
+    }
+  }
+  match={
+    Object {
+      "params": Object {
+        "level": "",
+      },
+    }
+  }
+  setMapRenderedStatus={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "isMapRendered": false,
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  showLoadingScreen={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+>
+  <div
+    className="mapContainer"
+    id="OSMap"
+  />
+</OSMap>
+`;

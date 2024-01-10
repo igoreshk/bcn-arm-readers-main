@@ -1,0 +1,87 @@
+/* stylelint-disable declaration-no-important */
+.floorChooser {
+  display: flex;
+  align-items: center;
+
+  .floorButtonActive, .floorButtonInactive {
+    height: 32px;
+    width: 32px;
+    margin-left: 10px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 5px 0,
+      rgba(0, 0, 0, 0.14) 0 2px 2px 0,
+      rgba(0, 0, 0, 0.12) 0 3px 1px -2px;
+
+    .label {
+      font-size: 14px;
+    }
+  }
+
+  .floorButtonActive {
+    background-color: rgba(57, 194, 215, 1);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .floorButtonInactive {
+    background-color: #6B6A6C;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  .floorButtonActive:first-child,
+  .floorButtonInactive:first-child,
+  .iconButton:first-child {
+    @media screen and (max-width: 515px) {
+      margin-left: 0;
+    }
+  }
+
+  .iconButton {
+    height: 32px;
+    width: 32px;
+    background-color: rgb(107, 106, 108);
+    border: 2px solid #ffffff;
+    padding: 0;
+    color: #ffffff;
+    margin-left: 10px;
+  }
+}
+
+.floorChooserDropdownMenu {
+  max-height: 300px !important;
+
+  .list {
+    padding: 0;
+
+    .item {
+      padding-left: 0;
+      padding-right: 0;
+      background-color: #464547;
+    }
+
+    .buttonContent {
+      display: flex;
+      align-items: center;
+    }
+
+    .floor {
+      height: 32px;
+      line-height: 32px;
+      width: 32px;
+      background-color: rgb(107, 106, 108);
+      margin-left: 5px;
+      margin-right: 5px;
+      color: #ffffff;
+      font-size: 13px;
+      border-radius: 50%;
+      box-shadow: rgba(0, 0, 0, 0.2) 0 1px 5px 0,
+        rgba(0, 0, 0, 0.14) 0 2px 2px 0,
+        rgba(0, 0, 0, 0.12) 0 3px 1px -2px;
+    }
+  }
+}

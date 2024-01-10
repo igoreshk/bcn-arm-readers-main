@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MonitoringHolder Check matching snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "@@observable": [Function],
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <MonitoringHolder
+    propsForSnapshot={
+      Object {
+        "isMapRendered": true,
+        "map": Object {},
+        "match": Object {},
+      }
+    }
+  />
+</Provider>
+`;

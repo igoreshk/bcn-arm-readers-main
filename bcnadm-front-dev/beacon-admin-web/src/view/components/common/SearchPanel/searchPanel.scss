@@ -1,0 +1,19 @@
+.searchPanelContainer {
+  display: flex;
+  align-items: center;
+  min-width: 150px;
+  margin-right: 24px;
+  border: 0.5mm solid rgba(222, 222, 222, 0.8);
+  border-radius: 50px;
+
+  .icon {
+    height: 30px;
+    width: 30px;
+    fill: #999999;
+    margin-left: 10px;
+  }
+
+  .searchPanel {
+    margin: 0 10px;
+  }
+}

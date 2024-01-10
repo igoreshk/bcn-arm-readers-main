@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RolesCheckBoxGroup Check matching snapshot 1`] = `
+<div
+  className="rolesCheckBoxGroup"
+>
+  <WithStyles(ForwardRef(FormControl))>
+    <ForwardRef(RadioGroup)
+      onChange={[Function]}
+      value={Array []}
+    />
+     
+  </WithStyles(ForwardRef(FormControl))>
+</div>
+`;

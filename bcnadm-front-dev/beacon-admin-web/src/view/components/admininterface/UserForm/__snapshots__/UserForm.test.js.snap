@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserForm Check matching snapshot 1`] = `
+<WithStyles(ForwardRef(Dialog))
+  className="userFormDialog"
+  open={true}
+>
+  <WithStyles(ForwardRef(DialogTitle)) />
+  <WithStyles(ForwardRef(DialogContent))>
+    <form
+      className="userForm"
+    >
+      <div
+        className="userFormLeft"
+      >
+        <Field
+          component={[Function]}
+          name="firstName"
+        />
+        <Field
+          component={[Function]}
+          name="lastName"
+        />
+        <Field
+          component={[Function]}
+          name="email"
+        />
+        <Field
+          component={[Function]}
+          name="status"
+        />
+      </div>
+      <div
+        className="userFormRight"
+      >
+        <label />
+        <Field
+          component={[Function]}
+          name="role"
+        />
+        <strong />
+      </div>
+    </form>
+  </WithStyles(ForwardRef(DialogContent))>
+  <WithStyles(ForwardRef(DialogActions))>
+    <WithStyles(ForwardRef(Button)) />
+    <WithStyles(ForwardRef(Button))
+      color="primary"
+      disabled={false}
+    />
+  </WithStyles(ForwardRef(DialogActions))>
+</WithStyles(ForwardRef(Dialog))>
+`;

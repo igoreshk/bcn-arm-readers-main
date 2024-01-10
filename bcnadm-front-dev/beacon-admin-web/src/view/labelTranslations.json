@@ -1,0 +1,1066 @@
+{
+  "epamloginpage": {
+    "login": [
+      "EPAM LOG IN",
+      "ВОЙТИ С ПОМОЩЬЮ EPAM"
+    ],
+    "password": [
+      "RESTORE PASSWORD",
+      "ВОССТАНОВИТЬ ПАРОЛЬ"
+    ]
+  },
+  "admin": {
+    "addUser": [
+      "ADD USER",
+      "ДОБАВИТЬ ПОЛЬЗОВАТЕЛЯ"
+    ],
+    "filter": [
+      "FILTER",
+      "ФИЛЬТР"
+    ],
+    "name": [
+      "FIRST NAME",
+      "ИМЯ"
+    ],
+    "surname": [
+      "LAST NAME",
+      "ФАМИЛИЯ"
+    ],
+    "email": [
+      "EMAIL",
+      "ЭЛ.ПОЧТА"
+    ],
+    "lastDate": [
+      "LAST ENTRY DATE",
+      "ДАТА ПОСЛЕДНЕГО ВХОДА"
+    ],
+    "permissions": [
+      "PERMISSIONS",
+      "РАЗРЕШЕНИЯ"
+    ],
+    "status": [
+      "STATUS",
+      "СТАТУС"
+    ],
+    "cancel": [
+      "Cancel",
+      "Отменить"
+    ],
+    "newUser": [
+      "New User",
+      "Новый пользователь"
+    ],
+    "updateUser": [
+      "Edit User",
+      "Редактировать пользователя"
+    ],
+    "save": [
+      "Save",
+      "Сохранить"
+    ],
+    "close": [
+      "Close",
+      "Закрыть"
+    ],
+    "more": [
+      "More",
+      "Дополнительно"
+    ],
+    "loadError": [
+      "Failed to load user data",
+      "Не удалось получить информацию о пользователе"
+    ],
+    "userFilter": {
+      "byFirstName": [
+        "By first name...",
+        "По имени..."
+      ],
+      "byLastName": [
+        "By last name...",
+        "По фамилии..."
+      ],
+      "byEmail": [
+        "By email...",
+        "По адресу эл. почты"
+      ],
+      "byDate": [
+        "By last entry date...",
+        "По дате посл. входа..."
+      ],
+      "byRoles": [
+        "By roles...",
+        "По ролям..."
+      ],
+      "byStatus": [
+        "By status...",
+        "По статусу..."
+      ]
+    },
+    "dialog": {
+      "buildings": [
+        "Select available buildings",
+        "Выберите доступные здания"
+      ],
+      "deleteUserTitle": [
+        "Delete user",
+        "Удаление пользователя"
+      ],
+      "warningMessage": [
+        "Are you sure you want to delete user ",
+        "Вы уверены, что хотите удалить пользователя "
+      ],
+      "name": [
+        "First name",
+        "Имя"
+      ],
+      "surname": [
+        "Last name",
+        "Фамилия"
+      ],
+      "email": [
+        "E-mail",
+        "Эл. почта"
+      ],
+      "permissions": [
+        "Permissions:",
+        "Разрешения:"
+      ],
+      "cancel": [
+        "Cancel",
+        "Отмена"
+      ],
+      "save": [
+        "Save",
+        "Сохранить"
+      ],
+      "create": [
+        "Create",
+        "Создать"
+      ],
+      "status": [
+        "Status",
+        "Статус"
+      ]
+    }
+  },
+  "operator": {
+    "buildings": [
+      "Buildings",
+      "Здания"
+    ],
+    "areas": [
+      "Areas",
+      "Области"
+    ],
+    "staff": [
+      "Staff",
+      "Сотрудники"
+    ],
+    "visitors": [
+      "Visitors",
+      "Посетители"
+    ],
+    "beacons": [
+      "Beacons",
+      "Маячки"
+    ],
+    "routes": [
+      "Routes",
+      "Маршруты"
+    ],
+    "readers": [
+      "Readers",
+      "Ридеры"
+    ],
+    "messenger": [
+      "Messenger",
+      "Чат"
+    ],
+    "watchers": [
+      "Watchers",
+      "Наблюдатели"
+    ],
+    "users": [
+      "Users",
+      "Пользователи"
+    ],
+    "help": [
+      "Help",
+      "Помощь"
+    ],
+    "scale": [
+      "Scale",
+      "Масштаб"
+    ],
+    "edit": [
+      "Edit",
+      "Редактировать"
+    ],
+    "clear": [
+      "CLEAR ALL",
+      "ОЧИСТИТЬ"
+    ],
+    "monitoring": [
+      "Monitoring",
+      "Наблюдение"
+    ],
+    "drawing": [
+      "Drawing",
+      "Отрисовка"
+    ],
+    "listOfAreas": [
+      "List of areas",
+      "Список областей"
+    ]
+  },
+  "drawing": {
+    "remove": [
+      "Remove",
+      "Убрать"
+    ],
+    "send": [
+      "Send",
+      "Отправить"
+    ],
+    "draw": [
+      "Draw",
+      "Нарисовать"
+    ],
+    "nameTyping": [
+      "type a name",
+      "введите имя"
+    ],
+    "nameConfirmation": [
+      "Confirm name",
+      "Подтвердить имя"
+    ],
+    "existingNameError": [
+      "Name already exists",
+      "Имя уже существует"
+    ],
+    "successfulSending": [
+      "Successfully sent",
+      "Успешно отправлено"
+    ]
+  },
+  "monitoringTooltip": {
+    "bpm": [
+      "bpm",
+      "уд/мин"
+    ],
+    "unknown": [
+      "unknown",
+      "неизвестно"
+    ],
+    "steps": [
+      "steps",
+      "шаг."
+    ],
+    "vital": [
+      "Vital Signs:",
+      "Основные Показатели:"
+    ],
+    "heart": [
+      "Heart Rate:",
+      "Пульс:"
+    ],
+    "body": [
+      "Body Temperature:",
+      "Температура Тела:"
+    ],
+    "step": [
+      "Step Count:",
+      "Количество Шагов:"
+    ]
+  },
+  "building": {
+    "addLevel": [
+      "Add level",
+      "Добавить этаж"
+    ],
+    "level": [
+      "Level  ${value}",
+      "Этаж  ${value}"
+    ],
+    "messages": {
+      "serverError": [
+        "An error was occurred during save, try again later.",
+        "Во время сохранения произошла ошибка. Пожалуйста, повторите попытку позже."
+      ],
+      "success": [
+        "Building saved successfully",
+        "Здание успешно сохранено"
+      ],
+      "unavailable": [
+        "Unable to open building",
+        "Невозможно открыть здание"
+      ],
+      "noLevels": [
+        "This building has no levels",
+        "У этого здания нет этажей"
+      ]
+    },
+    "update": {
+      "title": [
+        "Update building",
+        "Обновить здание"
+      ],
+      "titleLevels": [
+        "Update building (Levels)",
+        "Обновить здание (Этажи)"
+      ],
+      "save": [
+        "SAVE",
+        "СОХРАНИТЬ"
+      ]
+    },
+    "create": {
+      "title": [
+        "Create building",
+        "Создать здание"
+      ],
+      "titleLevels": [
+        "Create building (Levels)",
+        "Создать здание (Этажи)"
+      ],
+      "save": [
+        "CREATE",
+        "СОЗДАТЬ"
+      ]
+    },
+    "next": [
+      "Next",
+      "Далее"
+    ],
+    "back": [
+      "BACK",
+      "НАЗАД"
+    ],
+    "name": [
+      "Name",
+      "Название"
+    ],
+    "levels": [
+      "Levels",
+      "Этажи"
+    ],
+    "address": [
+      "Address",
+      "Адрес"
+    ],
+    "lat": [
+      "GPS latitude",
+      "GPS широта"
+    ],
+    "lng": [
+      "GPS longitude",
+      "GPS долгота"
+    ],
+    "width": [
+      "Building width",
+      "Ширина здания"
+    ],
+    "height": [
+      "Building height",
+      "Длина здания"
+    ],
+    "cancel": [
+      "Cancel",
+      "Отмена"
+    ],
+    "phoneNumber": [
+      "Office phone number",
+      "Номер офисного телефона"
+    ],
+    "workingHours": [
+      "Working hours (HH:MM-HH:MM)",
+      "Часы работы (ЧЧ:ММ-ЧЧ:ММ)"
+    ]
+  },
+  "map": {
+    "cancel": [
+      "Cancel",
+      "Отмена"
+    ],
+    "confirm": [
+      "Confirm",
+      "Подтвердить"
+    ],
+    "delete": [
+      "Delete",
+      "Удалить"
+    ],
+    "save": [
+      "Save",
+      "Сохранить"
+    ],
+    "distanceWarn": [
+      "Specify distance between placed vertices",
+      "Укажите расстояние между расположенными вершинами"
+    ],
+    "distance": [
+      "Distance (meters)",
+      "Расстояние (метры)"
+    ],
+    "editArea": [
+      "Edit area (Level ${value})",
+      "Редактировать область (Этаж ${value})"
+    ],
+    "newArea": [
+      "New area (Level ${value})",
+      "Создать область (Этаж ${value})"
+    ],
+    "editBeacon": [
+      "Edit beacon (Level ${value})",
+      "Редактировать маячок (Этаж ${value})"
+    ],
+    "editReader": [
+      "Edit reader (Level ${value})",
+      "Редактировать ридер (Этаж ${value})"
+    ],
+    "newBeacon": [
+      "New beacon (Level ${value})",
+      "Создать маячок (Этаж ${value})"
+    ],
+    "newReader": [
+      "New reader (Level ${value})",
+      "Создать ридер (Этаж ${value})"
+    ],
+    "clearAll": [
+      "Clear all",
+      "Очистить все"
+    ],
+    "clearAllDialog": [
+      "Are you sure you want to delete all the markers?",
+      "Вы уверены, что хотите удалить все маркеры?"
+    ],
+    "buidingSize": [
+      "Building size: ${value1}m x ${value2}m",
+      "Размер здания: ${value1}м x ${value2}м"
+    ]
+  },
+  "buildings": {
+    "addBuilding": [
+      "Add building",
+      "Создать здание"
+    ],
+    "openToEditBuildingError": [
+      "Failed to open the building",
+      "Не удалось открыть здание"
+    ],
+    "createBuildingError": [
+      "Failed to create a building",
+      "При создании здания произошла ошибка"
+    ],
+    "name": [
+      "Name",
+      "Название"
+    ],
+    "address": [
+      "Address",
+      "Адрес"
+    ],
+    "lat": [
+      "Latitude",
+      "Широта"
+    ],
+    "lng": [
+      "Longitude",
+      "Долгота"
+    ],
+    "show": [
+      "Show",
+      "Открыть"
+    ],
+    "remove": [
+      "Remove building",
+      "Удалить здание"
+    ],
+    "edit": [
+      "Edit",
+      "Редактировать"
+    ],
+    "create": [
+      "Create new",
+      "Создать"
+    ],
+    "preview": [
+      "Preview",
+      "Превью"
+    ]
+  },
+  "settings": {
+    "logout": [
+      "Logout",
+      "Выйти"
+    ],
+    "settings": [
+      "Settings",
+      "Настройки"
+    ],
+    "language": [
+      "Language",
+      "Язык"
+    ]
+  },
+  "watchers": {
+    "addWatcher": [
+      "ADD WATCHER",
+      "Добавить наблюдателя"
+    ],
+    "addWatcherError": [
+      "Failed to add watcher",
+      "Не удалось сохранить наблюдателя "
+    ],
+    "deleteWatcher": [
+      "Delete this watcher",
+      "Удалить этого наблюдателя"
+    ],
+    "deleteWatcherError": [
+      "Failed to delete watcher",
+      "Не удалось удалить наблюдателя "
+    ],
+    "createWatcherError": [
+      "Failed to create watcher",
+      "При создании наблюдателя произошла ошибка"
+    ],
+    "openWatcherError": [
+      "Failed to open watcher",
+      "Не удалось открыть наблюдателя"
+    ],
+    "editWatcher": [
+      "Edit watcher",
+      "Редактировать наблюдателя"
+    ],
+    "newWatcher": [
+      "New watcher",
+      "Новый наблюдатель"
+    ],
+    "watcherName": [
+      "WATCHER NAME",
+      "ИМЯ НАБЛЮДАТЕЛЯ"
+    ],
+    "visitor": [
+      "VISITOR",
+      "ПОСЕТИТЕЛЬ"
+    ],
+    "byVisitorName": [
+      "By visitor name...",
+      "По имени посетителя..."
+    ],
+    "byWatcherName": [
+      "By watcher name...",
+      "По имени наблюдателя..."
+    ],
+    "nonUniqueWatcherName": [
+      "Watcher name should be unique",
+      "Имя наблюдателя должно быть уникальным"
+    ]
+  },
+  "visitors": {
+    "addVisitor": [
+      "ADD VISITOR",
+      "Добавить посетителя"
+    ],
+    "newVisitor": [
+      "New visitor",
+      "Новый посетитель"
+    ],
+    "createVisitorError": [
+      "Failed to create visitor",
+      "При создании посетителя произошла ошибка"
+    ],
+    "openVisitorError": [
+      "Failed to open visitor",
+      "Не удалось открыть посетителя"
+    ],
+    "editVisitor": [
+      "Edit visitor",
+      "Редактировать посетителя"
+    ],
+    "name": [
+      "NAME",
+      "ИМЯ"
+    ],
+    "filter": [
+      "FILTER",
+      "ФИЛЬТР"
+    ],
+    "visitorFilter": {
+      "byName": [
+        "By name...",
+        "По имени..."
+      ]
+    },
+    "dialog": {
+      "deleteVisitorTitle": [
+        "Delete visitor",
+        "Удаление посетителя"
+      ],
+      "deleteVisitorError": [
+        "Failed to delete visitor ",
+        "Не удалось удалить посетителя "
+      ],
+      "warningMessage": [
+        "Are you sure you want to delete visitor ",
+        "Вы уверены, что хотите удалить посетителя "
+      ],
+      "saveVisitorError": [
+        "Failed to save visitor",
+        "Не удалось сохранить посетителя"
+      ],
+      "name": [
+        "Name",
+        "Имя"
+      ],
+      "deviceId": [
+        "Device ID",
+        "ID устройства"
+      ],
+      "uniqueDeviceIdError": [
+        "Device ID should be unique",
+        "ID устройства должен быть уникальным"
+      ],
+      "uniqueVisitorNameError": [
+        "Visitor name should be unique",
+        "Имя посетителя должно быть уникальным"
+      ],
+      "cancel": [
+        "Cancel",
+        "Отмена"
+      ],
+      "save": [
+        "Save",
+        "Сохранить"
+      ],
+      "create": [
+        "Create",
+        "Создать"
+      ]
+    }
+  },
+  "common": {
+    "cancel": [
+      "Cancel",
+      "Отмена"
+    ],
+    "remove": [
+      "Remove",
+      "Удалить"
+    ]
+  },
+  "mapAlerts": {
+    "saveError": [
+      "An error has occurred during save, try again later",
+      "Во время сохранения произошла ошибка. Пожалуйста, повторите попытку позже"
+    ],
+    "deleteError": [
+      "An error has occurred during deletion, try again later",
+      "Во время удаления произошла ошибка. Пожалуйста, повторите попытку позже"
+    ],
+    "beacon": {
+      "success": [
+        "Beacon has been saved!",
+        "Маячок сохранён!"
+      ],
+      "cancelledCreation": [
+        "Beacon has not been saved!",
+        "Маячок не сохранён!"
+      ],
+      "cancelledEdition": [
+        "Beacon's info has not been updated",
+        "Изменения параметров маячка не сохранены"
+      ],
+      "deleted": [
+        "Beacon has been deleted!",
+        "Маячок удалён!"
+      ],
+      "createBeaconError": [
+        "Failed to create a beacon",
+        "При создании маячка произошла ошибка"
+      ],
+      "openBeaconError": [
+        "Failed to open the beacon",
+        "Не удалось открыть маячок"
+      ],
+      "repeatedBeaconUUID": [
+        "Beacon with such UUID already exists in '${value}' building",
+        "Маячок с указанным UUID уже существует в здании ${value}"
+      ]
+    },
+    "reader": {
+      "success": [
+        "Reader has been saved!",
+        "Ридер сохранён!"
+      ],
+      "cancelledCreation": [
+        "Reader has not been saved!",
+        "Ридер не сохранён!"
+      ],
+      "cancelledEdition": [
+        "Reader's info has not been updated",
+        "Изменения параметров ридера не сохранены"
+      ],
+      "deleted": [
+        "Reader has been deleted!",
+        "Ридер удалён!"
+      ],
+      "createReaderError": [
+        "Failed to create reader",
+        "При создании ридера произошла ошибка"
+      ],
+      "openReaderError": [
+        "Failed to open the reader",
+        "Не удалось открыть ридер"
+      ]
+    },
+    "scaleEdge": {
+      "success": [
+        "Scale edge has been saved!",
+        "Ребро масшаба сохранено!"
+      ],
+      "cancelledEdition": [
+        "Scale edge has not been updated",
+        "Изменение ребра масштаба не сохранено"
+      ],
+      "deleted": [
+        "Scale edge has been deleted!",
+        "Ребро масштаба удалено!"
+      ]
+    },
+    "area": {
+      "success": [
+        "Area has been saved!",
+        "Область сохранена!"
+      ],
+      "cancelledCreation": [
+        "Area has not been saved!",
+        "Область не сохранена!"
+      ],
+      "failedToSave": [
+        "Failed to save the area",
+        "Не удалось сохранить область!"
+      ],
+      "cancelledEdition": [
+        "Area's info has not been updated",
+        "Изменения параметров области не сохранены"
+      ],
+      "deleted": [
+        "Area has been deleted!",
+        "Область удалена!"
+      ],
+      "failedToDelete": [
+        "Failed to delete the area",
+        "Не удалось удалить область!"
+      ]
+    }
+  },
+  "validation": {
+    "required": [
+      "Required",
+      "Обязательное поле"
+    ],
+    "invalidLevel": [
+      "Invalid level name",
+      "Некорректное название этажа"
+    ],
+    "invalidEmail": [
+      "Invalid e-mail address",
+      "Некорректный e-mail адрес"
+    ],
+    "invalidDistance": [
+      "Distance must be between 0 and 10000 meters",
+      "Укажите число между 0 и 10000 метров"
+    ],
+    "invalidAreaDescription": [
+      "Not more than 1000 chars",
+      "Не более 1000 символов"
+    ],
+    "invalidRoomNumber": [
+      "Must contain from 1 to 9 digits",
+      "Поле должно содержать от 1 до 9 цифр"
+    ],
+    "invalidCoordinates": [
+      "Invalid coordinates",
+      "Некорректные координаты"
+    ],
+    "invalidLevelNumber": [
+      "Level number must be only digits",
+      "Номер этажа должен состоять только из цифр"
+    ],
+    "invalidImageSize": [
+      "File size shouldn't be greater than ${value} MB",
+      "Размер файла не должен превышать ${value} MB"
+    ],
+    "invalidImageType": [
+      "Accepted only jpeg or png images",
+      "Разрешены только файлы с расширением jpeg или png"
+    ],
+    "invalidLevelImageType": [
+      "Accepted only jpeg, png or svg images",
+      "Разрешены только файлы с расширением jpeg, png или svg"
+    ],
+    "invalidName": [
+      "Name can't be less than 2 or more than 90 letters",
+      "Имя не может быть менее 2 символов и более 90"
+    ],
+    "invalidFirstName": [
+      "Name can't be less than 2 or more than 20 letters",
+      "Имя не может быть менее 2 символов и более 20"
+    ],
+    "invalidLastName": [
+      "Name can't be less than 2 or more than 35 letters",
+      "Имя не может быть менее 2 символов и более 35"
+    ],
+    "invalidWorkingHours": [
+      "Invalid Working Hours Format",
+      "Некорректный формат часов работы"
+    ],
+    "invalidBuildingSize": [
+      "Incorrect value or value equals zero",
+      "Некорректное значение или значение равно нулю"
+    ],
+    "invalidReaderSameName": [
+      "Reader name should be unique",
+      "Имя ридера должно быть уникальным"
+    ],
+    "invalidDeviceId": [
+      "Should be alphanumeric, 1-200 characters long",
+      "Должно состоять из 1-200 символов, латинских букв или цифр"
+    ],
+    "uniqueLevel": [
+      "Floor numbers must be unique",
+      "Номера этажей должны быть уникальными"
+    ]
+  },
+  "areas": {
+    "name": [
+      "Name",
+      "Наименование"
+    ],
+    "description": [
+      "Description",
+      "Описание"
+    ]
+  },
+  "monitoring": {
+    "name": [
+      "Name",
+      "Имя"
+    ],
+    "selectVisitors": [
+      "Select visitors",
+      "Выберите посетителей"
+    ],
+    "numberOfSelectedVisitorsFirstVariant": [
+      "${number} visitors selected",
+      "${number} посетитель выбран"
+    ],
+    "numberOfSelectedVisitorsSecondVariant": [
+      "${number} visitors selected",
+      "${number} посетителя выбрано"
+    ],
+    "numberOfSelectedVisitorsThirdVariant": [
+      "${number} visitors selected",
+      "${number} посетителей выбрано"
+    ],
+    "datePickerLabel": [
+      "Choose a date to monitor",
+      "Выберите день для мониторинга"
+    ],
+    "noHistoryDataMessage": [
+      "No position data available for selected time period. Please update selection",
+      "Информация о местонахождении за указанный период отсутсвует. Пожалуйста, измените параметры поиска"
+    ],
+    "noCurrentDataMessage": [
+      "No position data available",
+      "Информация о местонахождении отсутсвует"
+    ],
+    "loadDataError": [
+      "Failed to load position data",
+      "Не удалось получить информацию о местонахождении"
+    ],
+    "chooseStartDate": [
+      "Start date",
+      "C"
+    ],
+    "chooseEndDate": [
+      "End date",
+      "По"
+    ],
+    "noVisitorsToMonitor": [
+      "No Visitors",
+      "Посетители не найдены"
+    ],
+    "oneVisitorToMonitor": [
+      "Visitor",
+      "Посетитель"
+    ],
+    "visitorsMoreTwentyEndOne": [
+      "Visitors",
+      "Посетитель"
+    ],
+    "visitorsNumberEndsTwoThreeFour": [
+      "Visitors",
+      "Посетителя"
+    ],
+    "visitorsPluralDefaultNumber": [
+      "Visitors",
+      "Посетителей"
+    ],
+    "allVisitors": [
+      "All Visitors",
+      "Все посетители"
+    ],
+    "getVisitors": [
+      "Get visitors",
+      "Получить посетителей"
+    ],
+    "noVisitors": [
+      "There are no visitors",
+      "Посетителей не найдено"
+    ],
+    "visitorName": [
+      "Name",
+      "Имя"
+    ],
+    "visitorID": [
+      "visitor's ID",
+      "ID посетителя"
+    ]
+  },
+  "buildingsTable": {
+    "warningMessage": [
+      "Are you sure you want to delete building ",
+      "Вы уверены, что хотите удалить здание "
+    ],
+    "undoneMessage": [
+      "This operation can't be undone.",
+      "Эту операцию нельзя отменить."
+    ]
+  },
+  "userProfile": {
+    "settings": {
+      "name": [
+        "First name",
+        "Имя"
+      ],
+      "surname": [
+        "Last name",
+        "Фамилия"
+      ],
+      "email": [
+        "E-mail",
+        "Эл. почта"
+      ],
+      "login": [
+        "Login",
+        "Логин"
+      ],
+      "change": [
+        "Change",
+        "Изменить"
+      ],
+      "changePassword": [
+        "Change password",
+        "Изменить пароль"
+      ],
+      "userProfileSettings": [
+        "My profile settings",
+        "Настройки профиля"
+      ],
+      "newPasswordField": [
+        "New password",
+        "Новый пароль"
+      ],
+      "newLoginField": [
+        "New login",
+        "Новый логин"
+      ],
+      "newEmailField": [
+        "New e-mail",
+        "Новая эл. почта"
+      ],
+      "confirmPasswordField": [
+        "Confirm new password",
+        "Подтвердите пароль"
+      ],
+      "confirmationFailed": [
+        "Password doesn't match the confirmation",
+        "Пароли не совпадают"
+      ],
+      "validationFailed": [
+        "Invalid password",
+        "Недопустимый пароль"
+      ],
+      "newLoginTitle": [
+        "New login",
+        "Новый логин"
+      ],
+      "newEmailTitle": [
+        "New e-mail",
+        "Новая эл. почта"
+      ]
+    }
+  },
+  "popUpText": {
+    "saved": [
+      "Settings saved",
+      "Настройки сохранены"
+    ],
+    "forbidden403": [
+      "Error, access to the requested resource is forbidden",
+      "Ошибка, доступ к запрошенному ресурсу запрещен"
+    ],
+    "failedRequest": [
+      "Request failed, try it later",
+      "Запрос не отправлен, попробуйте позднее"
+    ],
+    "requestSent": [
+      "Request successfully sent, check your e-mail",
+      "Запрос успешно отправлен, проверьте свою электронную почту"
+    ],
+    "repeatedLogin": [
+      "Somebody have the same login",
+      "Этот логин уже существует"
+    ],
+    "repeatedEmail": [
+      "Somebody have the same email",
+      "Этот e-mail уже существует"
+    ]
+  },
+  "removeLevel": {
+    "warningMessage": [
+      "Are you sure to delete level ",
+      "Вы уверены, что хотите удалить этаж "
+    ],
+    "undoneMessage": [
+      "This operation can't be undone.",
+      "Эту операцию нельзя отменить."
+    ],
+    "title": [
+      "Remove level",
+      "Удалить этаж"
+    ],
+    "removeButton": [
+      "Remove",
+      "Удалить"
+    ]
+  },
+  "imageDropzone": {
+    "upload": [
+      "UPLOAD IMAGES",
+      "ЗАГРУЗИТЬ ИЗОБРАЖЕНИЯ"
+    ]
+  },
+  "errorBoundary": {
+    "notification": [
+      "Something went wrong",
+      "Что-то пошло не так"
+    ],
+    "repeatButton":[
+      "Try again",
+      "Попробовать снова"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SecondButtonGroup should match snapshot if map provider is OSM 1`] = `
+<Fragment>
+  <withRouter(Connect(MapPicker)) />
+  <withRouter(AreasListButton)
+    levelNumber={1}
+    translate={[MockFunction]}
+  />
+</Fragment>
+`;
+
+exports[`SecondButtonGroup should match snapshot if map provider is google 1`] = `
+<Fragment>
+  <withRouter(Connect(MapPicker)) />
+  <withRouter(Connect(BackgroundToggleButton)) />
+  <withRouter(AreasListButton)
+    levelNumber={1}
+    translate={[MockFunction]}
+  />
+</Fragment>
+`;

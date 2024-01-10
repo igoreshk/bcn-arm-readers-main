@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorFallback Check matching snapshot 1`] = `
+<LocalizedComponent
+  resetErrorBoundary={[MockFunction]}
+  translate={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "errorBoundary.notification",
+        ],
+        Array [
+          "errorBoundary.repeatButton",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+>
+  <ErrorFallback
+    addTranslation={[Function]}
+    addTranslationForLanguage={[Function]}
+    ignoreTranslateChildren={false}
+    initialize={[Function]}
+    languages={Array []}
+    renderToStaticMarkup={false}
+    resetErrorBoundary={[MockFunction]}
+    setActiveLanguage={[Function]}
+    translate={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "errorBoundary.notification",
+          ],
+          Array [
+            "errorBoundary.repeatButton",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+  >
+    <div
+      className="errorFallback"
+      role="alert"
+    >
+      <p />
+      <button
+        className="repeatButton"
+        onClick={[MockFunction]}
+        type="button"
+      />
+    </div>
+  </ErrorFallback>
+</LocalizedComponent>
+`;

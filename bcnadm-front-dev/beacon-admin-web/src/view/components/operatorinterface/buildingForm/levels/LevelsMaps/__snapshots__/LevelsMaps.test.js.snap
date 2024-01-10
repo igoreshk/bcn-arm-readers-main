@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LevelsMaps test snapshot for LevelsMaps 1`] = `
+<form
+  className="levelsMaps"
+  onSubmit={[Function]}
+>
+  <Logo
+    icon={
+      <FaBuilding
+        className="logo"
+      />
+    }
+    title=""
+  />
+  <LevelsDropzones
+    changeStatusOfSubmit={[Function]}
+    levels={Array []}
+    removeLevelField={[MockFunction]}
+    translate={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "building.create.titleLevels",
+          ],
+          Array [
+            "building.back",
+          ],
+          Array [
+            "building.create.save",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": "",
+          },
+          Object {
+            "type": "return",
+            "value": "",
+          },
+          Object {
+            "type": "return",
+            "value": "",
+          },
+        ],
+      }
+    }
+    updateLevels={[MockFunction]}
+  />
+  <div
+    className="buttonsContainer"
+  >
+    <WithStyles(ForwardRef(Button))
+      onClick={[MockFunction]}
+    />
+    <WithStyles(ForwardRef(Button))
+      className="submitButton"
+      color="primary"
+      disabled={false}
+      type="submit"
+      variant="contained"
+    />
+  </div>
+</form>
+`;

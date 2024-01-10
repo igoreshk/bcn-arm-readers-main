@@ -1,0 +1,23 @@
+.appBar {
+  position: fixed;
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  background-color: rgb(70, 69, 71);
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
+  z-index: 100;
+    
+  .appBarAddButton {  
+    margin-left: 15px;
+        
+    .text {
+      margin-left: 10px;
+    
+      @media screen and (max-width: 450px) {
+        display: none;
+      }
+    }
+  }
+}

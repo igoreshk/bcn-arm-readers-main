@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VisitorsTable Check matching snapshot 1`] = `
+<WithStyles(ForwardRef(Table))
+  className="visitorsTable"
+>
+  <WithStyles(ForwardRef(TableHead))>
+    <VisitorsTableHeader
+      sortedBy={null}
+      toggleFilter={[Function]}
+      toggleSortVisitorsByField={[Function]}
+      translate={[MockFunction]}
+    />
+  </WithStyles(ForwardRef(TableHead))>
+  <WithStyles(ForwardRef(TableBody)) />
+</WithStyles(ForwardRef(Table))>
+`;

@@ -1,0 +1,21 @@
+.modeButtonGroup {
+  display: flex;
+  margin-left: 36px;
+
+  .firstModeButtonGroup, .secondModeButtonGroup {
+    display: flex;
+
+    .activeButtonIcon, .inactiveButtonIcon {
+      width: 24px;
+      height: 24px;
+    }
+
+    .activeButtonIcon {
+      fill: #ffffff;
+    }
+
+    .inactiveButtonIcon {
+      fill: #999999;
+    }
+  }
+}

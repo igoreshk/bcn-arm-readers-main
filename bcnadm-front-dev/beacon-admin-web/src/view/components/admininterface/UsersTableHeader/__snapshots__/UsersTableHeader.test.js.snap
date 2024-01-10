@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UsersTableHeader Check matching snapshot 1`] = `
+<WithStyles(ForwardRef(TableRow))>
+  <WithStyles(ForwardRef(TableCell))>
+    <div
+      onClick={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "cursor": "pointer",
+          "display": "flex",
+        }
+      }
+    >
+      <Unsorted />
+    </div>
+  </WithStyles(ForwardRef(TableCell))>
+  <WithStyles(ForwardRef(TableCell))>
+    <div
+      onClick={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "cursor": "pointer",
+          "display": "flex",
+        }
+      }
+    >
+      <Unsorted />
+    </div>
+  </WithStyles(ForwardRef(TableCell))>
+  <WithStyles(ForwardRef(TableCell))>
+    <div
+      onClick={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "cursor": "pointer",
+          "display": "flex",
+        }
+      }
+    >
+      <Unsorted />
+    </div>
+  </WithStyles(ForwardRef(TableCell))>
+  <WithStyles(ForwardRef(TableCell)) />
+  <WithStyles(ForwardRef(TableCell)) />
+  <WithStyles(ForwardRef(TableCell)) />
+  <WithStyles(ForwardRef(TableCell))>
+    <WithStyles(ForwardRef(Button))
+      onClick={[MockFunction]}
+      style={
+        Object {
+          "float": "right",
+        }
+      }
+    >
+      <Memo(ForwardRef(FilterListIcon)) />
+      <span
+        style={
+          Object {
+            "marginLeft": "8px",
+          }
+        }
+      />
+    </WithStyles(ForwardRef(Button))>
+  </WithStyles(ForwardRef(TableCell))>
+</WithStyles(ForwardRef(TableRow))>
+`;

@@ -1,0 +1,109 @@
+/* stylelint-disable declaration-no-important */
+.userTable {
+  table-layout: fixed;
+
+  thead {
+    th {
+      color: rgba(0, 0, 0, 0.54);
+    }
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
+  }
+
+  tbody {
+    cursor: pointer;
+  }
+
+  .filter {
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
+  }
+
+  tr {
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+
+    @media screen and (max-width: 700px) {
+      display: block;
+      padding: 5px;
+      margin-bottom: 10px;
+      height: auto;
+    }
+
+    &:last-child {
+      padding: 10px;
+    }
+
+    td, th {
+      height: 40px;
+      padding: 10px;
+      border-bottom: none;
+    }
+
+    td {
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      @media screen and (max-width: 700px) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    td:before {
+      content: "";
+      display: none;
+            
+      @media screen and (max-width: 700px) {
+        display: block;
+        content: attr(data-label);
+        color: rgb(158, 158, 158);
+      }
+    }
+
+    .removeButtonText {
+      @media screen and (max-width: 700px) {
+        font-size: 12px;
+      }
+    }
+  }
+        
+  tr:first-child {
+    @media screen and (max-width: 700px) {
+      margin-top: 10px;
+    }
+  }
+
+  .datePicker > div:first-child {
+    width: unset !important;
+
+    > div:first-child {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .dateDivStyle {
+    display: flex;
+    align-items: center;
+  }
+    
+  .dateIconStyle {
+    fill: #39C2D7;
+  }
+    
+  .clearDateStyle {
+    fill: #39C2D7;
+  }
+    
+  .avatarStyle {
+    background: transparent;
+    width: 24px;
+    height: 24px;
+  }
+
+}

@@ -1,0 +1,139 @@
+/* stylelint-disable declaration-no-important */
+.monitoringHolder {
+  .actions {
+    position: absolute;
+    width: 100vw;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+    z-index: 2;
+
+    @media screen and (max-width: 1024px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .firstGroup, .secondGroup {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .firstGroup {
+      @media screen and (max-width: 1024px) {
+        margin-bottom: 20px;
+      }
+    }
+
+    .modeButtonGroup {
+      @media screen and (max-width: 375px) {
+        flex-direction: column;
+      }
+    }
+
+    .levelNumber {
+      font-size: 24px;
+      white-space: nowrap;
+    }
+
+    .secondGroup {
+      @media screen and (max-width: 625px) {
+        flex-direction: column;
+        align-items: center;
+      }
+      @media screen and (max-width: 1024px) {
+        margin: 0;
+      }
+      }
+
+    $datePickerHeight: 32px;
+
+    .datePickerContainer {
+
+      display: flex;
+      align-items: center;
+      height: $datePickerHeight;
+      width: 270px;
+      margin-left: 38px;
+      background-color: #6B6A6C;
+      border-radius: 20px;
+      cursor: pointer;
+
+      @media screen and (max-width: 625px) {
+        margin-left: 0;
+      }
+
+      :nth-child(2) {
+        margin: 0;
+        font-size: 14px;
+        padding-left: 51px;
+      }
+    }
+    .startDateContainer {
+      margin-bottom: 12px;
+
+      input {
+        padding-left: 8px;
+      }
+    }
+
+    input {
+      cursor: pointer;
+    }
+
+    .lastHistoryButton {
+      height: $datePickerHeight;
+      width: 270px;
+      margin-left: 38px;
+      background-color: #6B6A6C;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 12px;
+      border: none;
+      font: inherit;
+      font-size: 15px;
+      color: #FFFFFF;
+
+    }
+
+    .datePicker {
+      height: $datePickerHeight;
+      padding-left: 25px;
+
+      label {
+        margin: 5px 0 0 13px;
+        font-size: 19px;
+        color: #FFFFFF;
+        cursor: pointer;
+        z-index: 1;
+        width: 92px;
+      }
+
+      > div:first-child {
+        height: $datePickerHeight !important;
+        width: 200px !important;
+        white-space: nowrap;
+        font-size: 14px !important;
+
+        > div {
+          bottom: 4px !important;
+
+        }
+      }
+    }
+  }
+}
+
+.loaded-visitors {
+  display: grid;
+  grid-gap: 10px;
+  position: absolute;
+  top: 150px;
+  background-color: #FFFFFF;
+  padding: 20px;
+  border: 1px solid #000000;
+}
+
+.loaded-visitors_hidden {
+  display: none;
+}

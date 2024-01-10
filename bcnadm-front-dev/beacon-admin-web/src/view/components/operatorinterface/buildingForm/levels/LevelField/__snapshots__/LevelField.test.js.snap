@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LevelField test snapshot for LevelField 1`] = `
+<div
+  className="createLevelContainer"
+>
+  <WithStyles(ForwardRef(TextField))
+    className="levelNumber"
+    error={true}
+    name="level"
+    onChange={[Function]}
+    type="number"
+    value={0}
+  />
+  <LevelImageDropZone
+    changeLevelImage={[Function]}
+    imageLink="imageLink"
+    input={
+      Object {
+        "entityId": "entityId",
+        "image": "image",
+        "mimeType": "mimeType",
+        "onChange": [MockFunction],
+        "value": Object {
+          "image": "image",
+          "imageLink": "imageLink",
+          "number": 1,
+        },
+      }
+    }
+    maxSize={5242880}
+    number={0}
+    translate={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "validation.uniqueLevel",
+          ],
+          Array [
+            "removeLevel.removeButton",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+  />
+  <WithStyles(ForwardRef(Button))
+    classes={
+      Object {
+        "label": "removeButtonText",
+        "root": "removeButton",
+      }
+    }
+    onClick={[Function]}
+  />
+</div>
+`;

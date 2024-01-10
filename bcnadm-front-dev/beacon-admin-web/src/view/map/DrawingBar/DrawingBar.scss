@@ -1,0 +1,171 @@
+.drawing-bar__main-body {
+  display: flex;
+  position: relative;
+}
+
+.drawing-bar__wrapper {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  top: 70px;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+
+.drawing-bar-button-group__button:nth-of-type(1) {
+  z-index: 100;
+  position: absolute;
+  left: 50%;
+  font-size: 10px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  top: 100px;
+
+  &:disabled {
+    background-color: #77889a;
+    cursor: not-allowed;
+  }
+
+  .MuiButton-label {
+    margin: 0;
+    padding: 0;
+    width: 30px;
+  }
+}
+
+.drawing-bar__name-input-bar {
+  display: flex;
+  width: 300px;
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.drawing-bar__name-input-bar_input {
+  display: flex;
+  font-size: 7px;
+  background-color: #FFF;
+  width: 165px;
+
+  .MuiInputBase-input {
+    font-size: 16px;
+
+    &::placeholder {
+      padding-left: 20px;
+      font-size: 14px;
+    }
+  }
+
+  .MuiInputBase-root {
+    padding: 5px 0 5px 10px;
+  }
+}
+
+.drawing-bar__name-input-bar_button {
+  width: 100px;
+  height: 40px;
+  
+  .MuiButton-label {
+    font-size: 8px;
+  }
+}
+
+.drawing-bar__polygon-button,
+.drawing-bar__polygon-send-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 30px;
+  padding: 10px;
+  align-self: center;
+  cursor: pointer;
+  background-color: #ff4d2c;
+  border: none;
+  border-radius: 7px;
+  margin-top: 5px;
+
+  &:hover {
+    background-color: #3fe71d;
+    font-weight: 600;
+  }
+}
+
+.drawing-bar__polygon-send-button {
+  margin-top: 10px;
+  background-color: #0a81ec;
+
+  &:hover {
+    background-color: #f8d806;
+    font-weight: 600;
+  }
+}
+
+.leaflet-popup-content {
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.leaflet-popup-content-wrapper {
+  min-width: 120px;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  color: black;
+}
+
+.drawing-bar-button-group__error-bar {
+  display: flex;
+  z-index: 100;
+  position: absolute;
+  font-size: 10px;
+  height: 30px;
+  padding: 10px;
+  margin: 0;
+  top: 210px;
+  border-radius: 7px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.drawing-bar-button-group__error-bar_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 30px;
+  height: 20px;
+  border: 1px solid #000000;
+}
+
+.drawing-bar__polygon-pop-up {
+  display: flex;
+  background-color: #FFFFFF;
+  font-size: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
+.drawing-bar__polygon-button_get-data {
+  display: flex;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #0a81ec;
+  border: none;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.drawing-bar__polygon-pop-up-name {
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+}

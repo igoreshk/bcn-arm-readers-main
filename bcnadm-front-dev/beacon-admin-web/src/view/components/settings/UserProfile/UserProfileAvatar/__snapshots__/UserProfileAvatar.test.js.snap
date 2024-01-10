@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserProfileAvatar snapshot for UserProfileAvatar 1`] = `
+<WithStyles(ForwardRef(Paper))
+  className="userAvatarStyle"
+  elevation={6}
+>
+  <Field
+    component={[Function]}
+    maxSize={1048576}
+    name="image"
+    translate={[MockFunction]}
+  />
+  <div
+    className="userInfoStyle"
+  >
+    <span>
+      John
+       
+      Doe
+    </span>
+    <span>
+      JohnDoe@apple.com
+    </span>
+    <span>
+      JohnDoe
+    </span>
+  </div>
+</WithStyles(ForwardRef(Paper))>
+`;

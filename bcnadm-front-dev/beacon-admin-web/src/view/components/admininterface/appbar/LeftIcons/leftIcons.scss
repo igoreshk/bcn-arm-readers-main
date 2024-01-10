@@ -1,0 +1,41 @@
+.appBarLeftIcons {
+  background-color: rgba(57, 194, 215, 1);
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  align-items: center;
+
+  .menuOpenButton {
+    height: 56px;
+  }
+
+  .menuOpenButton:hover {
+    background-color: unset;
+  }
+
+  img {
+    width: 120px;
+    height: 30px;
+
+    @media screen and (max-width: 850px) {
+      display: none;
+    }
+  }
+
+  .drawer {
+    width: 198px;
+    top: 56px;
+    height: auto;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 10px, rgba(0, 0, 0, 0.23) 0 3px 10px;
+    
+    .svg {
+      color: rgb(117, 117, 117);
+      margin-right: 25px;
+    }
+
+    li{ 
+      color: rgba(0, 0, 0, 0.87);
+      padding: 10px 16px;
+    }
+  }
+}

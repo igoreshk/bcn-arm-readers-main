@@ -1,0 +1,21 @@
+.loadingScreen {
+  z-index: 3000;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+
+  .logo {
+    width: 20%;
+    max-width: 250px;
+  }
+    
+  .progressor {
+    position: absolute;
+    width: 40%;
+    max-width: 500px;
+  }
+}

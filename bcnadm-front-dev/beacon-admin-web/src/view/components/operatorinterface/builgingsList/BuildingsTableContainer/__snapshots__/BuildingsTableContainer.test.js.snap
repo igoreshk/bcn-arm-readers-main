@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BuildingsTableContainer Should match snapshot 1`] = `
+<Fragment>
+  <WithSearch(BuildingsTable)
+    keys={
+      Array [
+        "name",
+        "address",
+      ]
+    }
+    onEditClick={[Function]}
+    onRemoveClick={[Function]}
+    showMap={[Function]}
+    source={Array []}
+    translate={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "building.messages.noLevels",
+          ],
+          Array [
+            "building.addLevel",
+          ],
+          Array [
+            "building.messages.noLevels",
+          ],
+          Array [
+            "building.addLevel",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+  />
+  <WithStyles(ForwardRef(Snackbar))
+    action={
+      <React.Fragment>
+        <WithStyles(ForwardRef(Button))
+          color="secondary"
+          onClick={[Function]}
+          size="small"
+        />
+        <WithStyles(ForwardRef(IconButton))
+          aria-label="close"
+          color="inherit"
+          onClick={[Function]}
+          size="small"
+        >
+          <Memo
+            fontSize="small"
+          />
+        </WithStyles(ForwardRef(IconButton))>
+      </React.Fragment>
+    }
+    anchorOrigin={
+      Object {
+        "horizontal": "left",
+        "vertical": "bottom",
+      }
+    }
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  />
+</Fragment>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VisitorsSelectField Check matching snapshot 1`] = `
+<WithStyles(ForwardRef(FormControl))
+  className="visitorSelectFormControl"
+>
+  <WithStyles(ForwardRef(FormLabel))
+    disabled={true}
+  >
+    <span
+      className="placeholder"
+    />
+  </WithStyles(ForwardRef(FormLabel))>
+</WithStyles(ForwardRef(FormControl))>
+`;

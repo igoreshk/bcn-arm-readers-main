@@ -1,0 +1,25 @@
+.userForm {
+  display: flex;
+    
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
+
+  .userFormLeft {
+    display: flex;
+    flex-direction: column;
+
+    > div:first-child {
+      margin-top: 0;
+    }
+  }
+    
+  .userFormRight {
+    padding-left: 50px;
+
+    @media screen and (max-width: 800px) {
+      padding-left: 0;
+      padding-top: 30px;
+    }
+  }
+}

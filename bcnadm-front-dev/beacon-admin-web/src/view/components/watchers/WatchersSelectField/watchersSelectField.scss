@@ -1,0 +1,46 @@
+.secondGroup .watcherSelectFormControl {
+  display: flex;
+  align-items: stretch;
+  height: 32px;
+  width: 250px;
+  margin-left: 38px;
+  background-color: #6b6a6c;
+  border-radius: 20px;
+  cursor: pointer;
+
+  @media screen and (max-width: 625px) {
+    width: 300px;
+    margin-bottom: 20px;
+    margin-left: 0;
+  }
+
+  .visitorsSelect {
+    color: #ffffff;
+  }
+
+  .select {
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  .selectIcon {
+    color: #ffffff;
+    margin-right: 10px;
+  }
+}
+
+.visitorItem {
+  .avatar {
+    background: transparent;
+    object-fit: cover;
+  }
+
+  .name {
+    max-width: 160px;
+    margin-left: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

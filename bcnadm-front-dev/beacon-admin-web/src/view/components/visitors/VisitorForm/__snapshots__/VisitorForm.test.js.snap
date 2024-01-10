@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VisitorForm Check matching snapshot 1`] = `
+<WithStyles(ForwardRef(Dialog))
+  open={true}
+>
+  <WithStyles(ForwardRef(DialogTitle)) />
+  <WithStyles(ForwardRef(DialogContent))>
+    <form
+      className="visitorForm"
+    >
+      <div
+        className="firstBlock"
+      >
+        <div>
+          <Field
+            component={[Function]}
+            name="name"
+          />
+        </div>
+      </div>
+      <div
+        className="secondBlock"
+      >
+        <Field
+          component={[Function]}
+          name="deviceId"
+        />
+      </div>
+    </form>
+  </WithStyles(ForwardRef(DialogContent))>
+  <WithStyles(ForwardRef(DialogActions))>
+    <WithStyles(ForwardRef(Button)) />
+    <WithStyles(ForwardRef(Button))
+      color="primary"
+      disabled={true}
+    />
+  </WithStyles(ForwardRef(DialogActions))>
+</WithStyles(ForwardRef(Dialog))>
+`;

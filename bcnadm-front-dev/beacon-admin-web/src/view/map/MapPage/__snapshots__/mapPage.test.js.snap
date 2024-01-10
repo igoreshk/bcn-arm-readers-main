@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Map Check matching snapshot 1`] = `
+<div
+  className="mapPage"
+>
+  <withRouter(LocalizedComponent) />
+  <Connect(MapRouter)
+    buildingCenterCoordinates={Array []}
+    loadedOSMap={
+      Object {
+        "current": undefined,
+      }
+    }
+    picture={Array []}
+    pictureCoords={Array []}
+    selectedMapProviderName="Google"
+  />
+  <Suspense
+    fallback={<LoadingScreen />}
+  >
+    <lazy
+      buildingCenterCoordinates={Array []}
+      loadedOSMap={
+        Object {
+          "current": undefined,
+        }
+      }
+      picture={Array []}
+      pictureCoords={Array []}
+      selectedMapProviderName="Google"
+      setBuildingCenterCoordinates={[Function]}
+      setPicture={[Function]}
+      setPictureCoords={[Function]}
+      shapes={Array []}
+    />
+  </Suspense>
+</div>
+`;

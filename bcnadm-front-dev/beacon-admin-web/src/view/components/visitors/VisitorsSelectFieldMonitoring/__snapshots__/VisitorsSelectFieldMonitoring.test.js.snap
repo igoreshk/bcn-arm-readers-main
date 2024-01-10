@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VisitorsSelectFieldMonitoring Check matching snapshot 1`] = `
+<WithStyles(ForwardRef(FormControl))
+  className="visitorSelectFormControl"
+>
+  <WithStyles(ForwardRef(Select))
+    classes={
+      Object {
+        "icon": "selectIcon",
+        "root": "visitorsSelect",
+        "select": "select",
+      }
+    }
+    disableUnderline={true}
+    displayEmpty={true}
+    multiple={true}
+    onChange={[Function]}
+    renderValue={[Function]}
+    value={Array []}
+  >
+    <WithStyles(ForwardRef(MenuItem))
+      disabled={true}
+      value=""
+    >
+      <span />
+    </WithStyles(ForwardRef(MenuItem))>
+    <WithStyles(ForwardRef(MenuItem))
+      data-button-all={true}
+    >
+      <WithStyles(ForwardRef(ListItemIcon))>
+        <WithStyles(ForwardRef(Checkbox))
+          checked={false}
+          indeterminate={false}
+        />
+      </WithStyles(ForwardRef(ListItemIcon))>
+      <WithStyles(ForwardRef(ListItemText)) />
+    </WithStyles(ForwardRef(MenuItem))>
+    <WithStyles(ForwardRef(MenuItem))
+      className="visitorItem"
+      key="5fc8bf048dfe557a0c9a9191"
+      name="visitor"
+      value={
+        Object {
+          "entityId": "5fc8bf048dfe557a0c9a9191",
+          "name": "George",
+        }
+      }
+    >
+      George
+    </WithStyles(ForwardRef(MenuItem))>
+  </WithStyles(ForwardRef(Select))>
+</WithStyles(ForwardRef(FormControl))>
+`;

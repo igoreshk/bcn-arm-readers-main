@@ -1,0 +1,102 @@
+.timePicker {
+  position: absolute;
+  z-index: 2;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  padding: 1.5% 10% 1%;
+  background-color: #615E5E;
+  border-radius: 12px;
+  .dayChoose {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .timePickerButton {
+      border-radius: 20px;
+      background-color: #FFFFFF;
+      color: black;
+      font-size: 13px;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      width: 57px;
+      height: 24px;
+    }
+
+    .timePickerArrow {
+      border: solid #FFFFFF;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 4px;
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      cursor: pointer;
+      margin-left: -16px;
+      margin-right: 5px;
+    }
+
+    .timePickerArrow:nth-child(2) {
+      margin-right: -16px;
+      margin-left: 5px;
+    }
+
+    .leftArrow {
+      transform: rotate(135deg);
+    }
+  }
+
+  .MuiSlider-root {
+    color: #FFFFFF;
+
+    .MuiSlider-thumb .MuiSlider-valueLabel {
+      left: calc(-50% - 114px);
+      position: unset;
+    }
+
+    .MuiSlider-valueLabel span:first-of-type {
+      border-radius: 9px 9px 0px 9px;
+      transform: unset;
+      width: 126px;
+      height: 80px;
+      bottom: 1px;
+      right: 0px;
+      box-shadow: 1px 0px 20px #615e5e;
+      position: absolute;
+
+      span p {
+        color: #464547;
+        position: relative;
+        top: 10px;
+        box-shadow: none;
+        font-size: 14px;
+        margin: 0 0 0 6px;
+        line-height: 21px;
+      }
+
+    }
+
+    .MuiSlider-markLabel {
+      color: #FFFFFF;
+    }
+
+  }
+
+  .nextPreviousDay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .timeContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    .time {
+      font-size: 26px;
+    }
+  }
+}

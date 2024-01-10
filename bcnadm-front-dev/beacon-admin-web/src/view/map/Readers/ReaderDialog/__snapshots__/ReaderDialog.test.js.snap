@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReaderDialog Check matching snapshot 1`] = `
+<WithStyles(ForwardRef(Dialog))
+  classes={
+    Object {
+      "paper": "mapDialog",
+    }
+  }
+  onClose={[Function]}
+  open={true}
+>
+  <WithStyles(ForwardRef(DialogTitle)) />
+  <WithStyles(ForwardRef(DialogContent))>
+    <LocalizedComponent
+      enableReinitialize={true}
+      initialValues={
+        Object {
+          "allReaders": Array [
+            "firstTestName",
+            "secondTestName",
+            "thirdTestName",
+            "forthTestName",
+          ],
+          "id": undefined,
+          "uuid": null,
+        }
+      }
+    />
+  </WithStyles(ForwardRef(DialogContent))>
+  <WithStyles(ForwardRef(DialogActions))>
+    <div
+      className="mock"
+    />
+    <WithStyles(ForwardRef(Button))
+      key="2"
+      onClick={[Function]}
+    />
+    <WithStyles(ForwardRef(Button))
+      color="primary"
+      disabled={true}
+      key="3"
+      onClick={[Function]}
+    />
+  </WithStyles(ForwardRef(DialogActions))>
+</WithStyles(ForwardRef(Dialog))>
+`;

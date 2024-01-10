@@ -1,0 +1,202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BuildingInfoForm test snapshot for BuildingInfoForm 1`] = `
+<div
+  className="buildingInfoForm"
+>
+  <div
+    className="firstBlock"
+  >
+    <div>
+      <Logo
+        icon={
+          <FaBuilding
+            className="logo"
+          />
+        }
+        title=""
+      />
+      <Field
+        component={[Function]}
+        label=""
+        maxLength={70}
+        name="name"
+      />
+    </div>
+    <Field
+      component={[Function]}
+      imageLink="imageLink"
+      maxSize={1048576}
+      name="mapImage"
+      translate={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              "building.update.title",
+            ],
+            Array [
+              "building.name",
+            ],
+            Array [
+              "building.address",
+            ],
+            Array [
+              "building.phoneNumber",
+            ],
+            Array [
+              "building.workingHours",
+            ],
+            Array [
+              "building.lat",
+            ],
+            Array [
+              "building.lng",
+            ],
+            Array [
+              "building.height",
+            ],
+            Array [
+              "building.width",
+            ],
+            Array [
+              "building.cancel",
+            ],
+            Array [
+              "building.next",
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": "",
+            },
+            Object {
+              "type": "return",
+              "value": "",
+            },
+            Object {
+              "type": "return",
+              "value": "",
+            },
+            Object {
+              "type": "return",
+              "value": "",
+            },
+            Object {
+              "type": "return",
+              "value": "",
+            },
+            Object {
+              "type": "return",
+              "value": "",
+            },
+            Object {
+              "type": "return",
+              "value": "",
+            },
+            Object {
+              "type": "return",
+              "value": "",
+            },
+            Object {
+              "type": "return",
+              "value": "",
+            },
+            Object {
+              "type": "return",
+              "value": "",
+            },
+            Object {
+              "type": "return",
+              "value": "",
+            },
+          ],
+        }
+      }
+    />
+  </div>
+  <div
+    className="secondBlock"
+  >
+    <Field
+      component={[Function]}
+      label=""
+      maxLength={256}
+      name="address"
+    />
+    <div
+      className="row"
+    >
+      <Field
+        component={[Function]}
+        label=""
+        name="phoneNumber"
+      />
+      <Field
+        component={[Function]}
+        label=""
+        name="workingHours"
+      />
+    </div>
+    <div
+      className="row"
+    >
+      <Field
+        component={[Function]}
+        label=""
+        name="latitude"
+        type="number"
+      />
+      <Field
+        component={[Function]}
+        label=""
+        name="longitude"
+        type="number"
+      />
+    </div>
+    <div
+      className="row"
+    >
+      <Field
+        component={[Function]}
+        label=""
+        name="height"
+        type="number"
+      />
+      <Field
+        component={[Function]}
+        label=""
+        name="width"
+        type="number"
+      />
+    </div>
+  </div>
+  <div
+    className="thirdBlock"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="map"
+      >
+        <Connect(Wrapper) />
+      </div>
+    </div>
+  </div>
+  <div
+    className="buttonsContainer"
+  >
+    <WithStyles(ForwardRef(Button))
+      onClick={[MockFunction]}
+    />
+    <WithStyles(ForwardRef(Button))
+      className="nextButton"
+      color="primary"
+      disabled={false}
+      onClick={[MockFunction]}
+      variant="contained"
+    />
+  </div>
+</div>
+`;

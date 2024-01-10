@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MonitoringTooltip Check matching snapshot 1`] = `
+<div
+  style={Object {}}
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+      }
+    }
+  >
+    <span
+      style={
+        Object {
+          "fontSize": "15px",
+          "fontWeight": "bold",
+          "marginLeft": "8px",
+        }
+      }
+    />
+    <span
+      style={
+        Object {
+          "fontSize": "15px",
+          "fontWeight": "bold",
+          "marginLeft": "8px",
+        }
+      }
+    >
+      123
+    </span>
+  </div>
+  <div
+    style={
+      Object {
+        "marginTop": "8px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    />
+    <div
+      style={Object {}}
+    >
+      <div>
+         
+         
+      </div>
+      <div>
+         
+         
+      </div>
+      <div>
+         
+         
+      </div>
+    </div>
+  </div>
+</div>
+`;

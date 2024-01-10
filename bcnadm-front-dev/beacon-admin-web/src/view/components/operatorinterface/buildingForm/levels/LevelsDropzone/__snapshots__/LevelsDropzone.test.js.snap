@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing LevelsDropzone Check matching snapshot 1`] = `
+<div
+  className="levelsDropzones"
+>
+  <Scrollbars
+    autoHeight={false}
+    autoHeightMax={200}
+    autoHeightMin={0}
+    autoHide={false}
+    autoHideDuration={200}
+    autoHideTimeout={1000}
+    className="scrollbar"
+    hideTracksWhenNotNeeded={false}
+    renderThumbHorizontal={[Function]}
+    renderThumbVertical={[Function]}
+    renderTrackHorizontal={[Function]}
+    renderTrackVertical={[Function]}
+    renderView={[Function]}
+    tagName="div"
+    thumbMinSize={30}
+    universal={false}
+  >
+    <div
+      className="scrollbarContent"
+    >
+      <Field
+        changeLevelImage={[Function]}
+        changeLevelNumber={[Function]}
+        component={[Function]}
+        key="0"
+        name="levels[0]"
+        onRemoveLevelClick={[MockFunction]}
+        params={
+          Object {
+            "entityId": undefined,
+            "image": undefined,
+            "imageLink": null,
+            "levelIndex": 0,
+            "number": 1,
+            "unique": true,
+          }
+        }
+        translate={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "building.addLevel",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+      />
+      <Field
+        changeLevelImage={[Function]}
+        changeLevelNumber={[Function]}
+        component={[Function]}
+        key="1"
+        name="levels[1]"
+        onRemoveLevelClick={[MockFunction]}
+        params={
+          Object {
+            "entityId": undefined,
+            "image": undefined,
+            "imageLink": null,
+            "levelIndex": 1,
+            "number": 2,
+            "unique": true,
+          }
+        }
+        translate={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "building.addLevel",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+      />
+      <div />
+    </div>
+  </Scrollbars>
+  <div
+    className="addLevelButtonContainer"
+  >
+    <WithStyles(ForwardRef(Button))
+      color="primary"
+      onClick={[Function]}
+    />
+  </div>
+</div>
+`;

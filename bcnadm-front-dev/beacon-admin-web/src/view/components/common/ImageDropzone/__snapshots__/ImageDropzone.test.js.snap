@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageDropzone test snapshot for ImageDropzone 1`] = `
+<div
+  className="dropzone"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onDragEnter={[Function]}
+  onDragLeave={[Function]}
+  onDragOver={[Function]}
+  onDrop={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}
+>
+  <input
+    accept=".png, .jpeg, .jpg, .svg"
+    autoComplete="off"
+    multiple={true}
+    onChange={[Function]}
+    onClick={[Function]}
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+    tabIndex={-1}
+    type="file"
+  />
+  <img
+    className="preview"
+    src={
+      Object {
+        "image": "",
+      }
+    }
+  />
+</div>
+`;

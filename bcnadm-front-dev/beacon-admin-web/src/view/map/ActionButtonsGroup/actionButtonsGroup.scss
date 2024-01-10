@@ -1,0 +1,17 @@
+.actionButtonsGroup {
+  display: flex;
+  margin-left: 36px;
+
+  .activeEditButtonIcon, .inactiveEditButtonIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .activeEditButtonIcon {
+    fill: #ffffff;
+  }
+
+  .inactiveEditButtonIcon {
+    fill: #B22746;
+  }
+}

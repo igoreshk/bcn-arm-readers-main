@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BuildingsTable Should match snapshot 1`] = `
+<WithStyles(ForwardRef(Table))
+  className="buildingsTable"
+>
+  <WithStyles(ForwardRef(TableHead))>
+    <WithStyles(ForwardRef(TableRow))>
+      <WithStyles(ForwardRef(TableCell)) />
+      <WithStyles(ForwardRef(TableCell)) />
+      <WithStyles(ForwardRef(TableCell)) />
+      <WithStyles(ForwardRef(TableCell)) />
+      <WithStyles(ForwardRef(TableCell)) />
+      <WithStyles(ForwardRef(TableCell))
+        className="buttonsCell"
+      >
+        <SearchPanel
+          className="buldingSearch"
+          textFieldRest={
+            Object {
+              "InputProps": Object {
+                "disableUnderline": true,
+              },
+              "fullWidth": true,
+            }
+          }
+        />
+      </WithStyles(ForwardRef(TableCell))>
+    </WithStyles(ForwardRef(TableRow))>
+  </WithStyles(ForwardRef(TableHead))>
+  <WithStyles(ForwardRef(TableBody))>
+    <WithStyles(ForwardRef(TableRow))
+      hover={true}
+      key="5bf2afcc31d7221230a09ea4"
+    >
+      <WithStyles(ForwardRef(TableCell))>
+        FIRST NAME
+      </WithStyles(ForwardRef(TableCell))>
+      <WithStyles(ForwardRef(TableCell))>
+        FIRST ADDRESS
+      </WithStyles(ForwardRef(TableCell))>
+      <WithStyles(ForwardRef(TableCell)) />
+      <WithStyles(ForwardRef(TableCell)) />
+      <WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(Avatar))
+          src="/api/v1/buildings/5bf2afcc31d7221230a09ea4/image"
+          style={
+            Object {
+              "borderRadius": "0%",
+              "height": "60px",
+              "marginRight": "0px",
+              "maxWidth": "60px",
+              "objectFit": "cover",
+              "width": "100%",
+            }
+          }
+        />
+      </WithStyles(ForwardRef(TableCell))>
+      <WithStyles(ForwardRef(TableCell))
+        className="buttonsCell"
+      >
+        <WithStyles(ForwardRef(Button))
+          classes={
+            Object {
+              "label": "buttonText",
+            }
+          }
+          name="edit-building-button"
+        />
+        <WithStyles(ForwardRef(Button))
+          classes={
+            Object {
+              "label": "buttonText",
+            }
+          }
+          name="remove-building-button"
+        />
+      </WithStyles(ForwardRef(TableCell))>
+    </WithStyles(ForwardRef(TableRow))>
+    <WithStyles(ForwardRef(TableRow))
+      hover={true}
+      key="5bf2afcc31d7221230a09ea4"
+    >
+      <WithStyles(ForwardRef(TableCell))>
+        SECOND NAME
+      </WithStyles(ForwardRef(TableCell))>
+      <WithStyles(ForwardRef(TableCell))>
+        SECOND ADDRESS
+      </WithStyles(ForwardRef(TableCell))>
+      <WithStyles(ForwardRef(TableCell)) />
+      <WithStyles(ForwardRef(TableCell)) />
+      <WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(Avatar))
+          src="/api/v1/buildings/5bf2afcc31d7221230a09ea4/image"
+          style={
+            Object {
+              "borderRadius": "0%",
+              "height": "60px",
+              "marginRight": "0px",
+              "maxWidth": "60px",
+              "objectFit": "cover",
+              "width": "100%",
+            }
+          }
+        />
+      </WithStyles(ForwardRef(TableCell))>
+      <WithStyles(ForwardRef(TableCell))
+        className="buttonsCell"
+      >
+        <WithStyles(ForwardRef(Button))
+          classes={
+            Object {
+              "label": "buttonText",
+            }
+          }
+          name="edit-building-button"
+        />
+        <WithStyles(ForwardRef(Button))
+          classes={
+            Object {
+              "label": "buttonText",
+            }
+          }
+          name="remove-building-button"
+        />
+      </WithStyles(ForwardRef(TableCell))>
+    </WithStyles(ForwardRef(TableRow))>
+    <WithStyles(ForwardRef(TableRow))
+      hover={true}
+      key="5bf2afcc31d7221230a09ea4"
+    >
+      <WithStyles(ForwardRef(TableCell))>
+        THIRD NAME
+      </WithStyles(ForwardRef(TableCell))>
+      <WithStyles(ForwardRef(TableCell))>
+        THIRD ADDRESS
+      </WithStyles(ForwardRef(TableCell))>
+      <WithStyles(ForwardRef(TableCell)) />
+      <WithStyles(ForwardRef(TableCell)) />
+      <WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(Avatar))
+          src="/api/v1/buildings/5bf2afcc31d7221230a09ea4/image"
+          style={
+            Object {
+              "borderRadius": "0%",
+              "height": "60px",
+              "marginRight": "0px",
+              "maxWidth": "60px",
+              "objectFit": "cover",
+              "width": "100%",
+            }
+          }
+        />
+      </WithStyles(ForwardRef(TableCell))>
+      <WithStyles(ForwardRef(TableCell))
+        className="buttonsCell"
+      >
+        <WithStyles(ForwardRef(Button))
+          classes={
+            Object {
+              "label": "buttonText",
+            }
+          }
+          name="edit-building-button"
+        />
+        <WithStyles(ForwardRef(Button))
+          classes={
+            Object {
+              "label": "buttonText",
+            }
+          }
+          name="remove-building-button"
+        />
+      </WithStyles(ForwardRef(TableCell))>
+    </WithStyles(ForwardRef(TableRow))>
+  </WithStyles(ForwardRef(TableBody))>
+</WithStyles(ForwardRef(Table))>
+`;

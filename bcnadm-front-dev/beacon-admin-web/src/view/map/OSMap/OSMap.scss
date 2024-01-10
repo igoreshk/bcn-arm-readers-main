@@ -1,0 +1,7 @@
+.mapContainer {
+  z-index: 1;
+  height: 100%;
+  .iconMonitoring:hover{
+    filter: invert(0.2) sepia(1) saturate(5) hue-rotate(190deg) contrast(90);
+  }
+}

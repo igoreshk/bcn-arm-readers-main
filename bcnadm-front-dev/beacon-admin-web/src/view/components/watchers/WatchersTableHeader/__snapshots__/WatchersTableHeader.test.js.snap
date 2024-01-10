@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WatchersTableHeader Check matching snapshot 1`] = `
+<WithStyles(ForwardRef(TableRow))>
+  <WithStyles(ForwardRef(TableCell))>
+    <div
+      className="name"
+      onClick={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "color": "rgba(0, 0, 0, 0.54)",
+          "cursor": "pointer",
+          "display": "flex",
+        }
+      }
+    >
+      <Unsorted />
+    </div>
+  </WithStyles(ForwardRef(TableCell))>
+  <WithStyles(ForwardRef(TableCell))>
+    <div
+      className="visitors"
+      onClick={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "color": "rgba(0, 0, 0, 0.54)",
+          "cursor": "pointer",
+          "display": "flex",
+        }
+      }
+    >
+      <Unsorted />
+    </div>
+  </WithStyles(ForwardRef(TableCell))>
+  <WithStyles(ForwardRef(TableCell))
+    className="remove"
+  >
+    <WithStyles(ForwardRef(Button))
+      className="removeButton"
+      onClick={[MockFunction]}
+    >
+      <Memo(ForwardRef(FilterListIcon)) />
+      <span
+        style={
+          Object {
+            "marginLeft": "10px",
+          }
+        }
+      />
+    </WithStyles(ForwardRef(Button))>
+  </WithStyles(ForwardRef(TableCell))>
+</WithStyles(ForwardRef(TableRow))>
+`;

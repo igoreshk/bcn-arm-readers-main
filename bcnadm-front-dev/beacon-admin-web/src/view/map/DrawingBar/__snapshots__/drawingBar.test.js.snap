@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check matching snapshot with Google map Check matching snapshot 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "subscription": Object {
+        "addNestedSub": [Function],
+        "getListeners": [Function],
+        "handleChangeWrapper": [Function],
+        "isSubscribed": [Function],
+        "notifyNestedSubs": [Function],
+        "onStateChange": [Function],
+        "trySubscribe": [Function],
+        "tryUnsubscribe": [Function],
+      },
+    }
+  }
+>
+  <DrawingBar
+    buildingCenterCoordinates={
+      Array [
+        57.2,
+        19.1,
+      ]
+    }
+    match={
+      Object {
+        "isExact": true,
+        "params": Object {
+          "building": "6127807a5c161c2136ae8cb4",
+          "layer": "drawing",
+          "level": "614085264bb5bb44010a68cb",
+        },
+        "path": "/buildings/:building/levels/:level/:layer/:edit?",
+        "url": "/buildings/6127807a5c161c2136ae8cb4/levels/614085264bb5bb44010a68cb/drawing",
+      }
+    }
+    picture="http://localhost:3000/api/v1/levels/614085264bb5bb44010a68cb/image"
+    pictureCoords={
+      Array [
+        Array [
+          Object {
+            "lat": 57.97220388411178,
+            "lng": 19.271508080117208,
+          },
+        ],
+        Array [
+          Object {
+            "lat": 57.97535120449788,
+            "lng": 19.263594881636408,
+          },
+        ],
+      ]
+    }
+    selectedMapProviderName="Google"
+    translate={[MockFunction]}
+  />
+</ContextProvider>
+`;
+
+exports[`Check matching snapshot with OSM map Check matching snapshot 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "subscription": Object {
+        "addNestedSub": [Function],
+        "getListeners": [Function],
+        "handleChangeWrapper": [Function],
+        "isSubscribed": [Function],
+        "notifyNestedSubs": [Function],
+        "onStateChange": [Function],
+        "trySubscribe": [Function],
+        "tryUnsubscribe": [Function],
+      },
+    }
+  }
+>
+  <DrawingBar
+    loadedOSMap={
+      Object {
+        "current": Object {
+          "_lastCenter": Object {
+            "lat": 57.973066416050386,
+            "lng": 19.265937209129337,
+          },
+          "options": Object {
+            "center": Array [
+              57.97377757885401,
+              19.267551480876808,
+            ],
+            "zoom": 18,
+          },
+          "provider": "OSM",
+        },
+      }
+    }
+    match={
+      Object {
+        "isExact": true,
+        "params": Object {
+          "building": "6127807a5c161c2136ae8cb4",
+          "layer": "drawing",
+          "level": "614085264bb5bb44010a68cb",
+        },
+        "path": "/buildings/:building/levels/:level/:layer/:edit?",
+        "url": "/buildings/6127807a5c161c2136ae8cb4/levels/614085264bb5bb44010a68cb/drawing",
+      }
+    }
+    selectedMapProviderName="OSM"
+    translate={[MockFunction]}
+  />
+</ContextProvider>
+`;
