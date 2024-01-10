@@ -1,0 +1,49 @@
+plugins {
+    id "com.github.node-gradle.node" version "2.2.4"
+}
+
+node {
+    version = '12.13.0'
+    download = true
+    npmVersion = '6.12.0'
+}
+
+task installDependencies(type: NpmTask) {
+    args = ['install']
+}
+
+task checkStyleSheets(type: NpmTask) {
+    args = ['run', 'stylelint']
+}
+checkStyleSheets.dependsOn(installDependencies)
+
+task checkMain(type: NpmTask) {
+    args = ['run', 'lint-main']
+}
+checkMain.dependsOn(checkStyleSheets)
+
+task checkTest(type: NpmTask) {
+    args = ['run', 'lint-test']
+}
+checkTest.dependsOn(checkMain)
+
+task test(type: NpmTask) {
+    args = ['test']
+}
+test.dependsOn(checkTest)
+
+// build whole frontend and
+task build(type: NpmTask) {
+    args = ['run', 'build']
+}
+build.dependsOn(test)
+
+task start(type: NpmTask) {
+    args = ['start']
+}
+
+task clean() {
+    delete 'dist'
+    delete 'build'
+    delete 'out'
+}

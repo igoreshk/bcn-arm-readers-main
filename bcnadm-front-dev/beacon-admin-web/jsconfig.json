@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "actions/*": ["src/actions/*"],
+      "config/*": ["src/config/*"],
+      "reducers/*": ["src/reducers/*"],
+      "service/*": ["src/service/*"],
+      "thunk/*": ["src/thunk/*"],
+      "transformers/*": ["src/transformers/*"],
+      "utils/*": ["src/utils/*"],
+      "view/*": ["src/view/*"],
+      "src/*": ["src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
