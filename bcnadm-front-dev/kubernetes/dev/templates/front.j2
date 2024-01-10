@@ -1,0 +1,56 @@
+---
+#========================= admin-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-app
+  namespace: dev
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30280
+  selector:
+    name: beacons-admin-web
+  type: NodePort
+
+
+
+#=========================
+#========================= Deployments
+#=========================
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-admin-web
+  namespace: dev
+  labels:
+    app: beacons-admin-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-admin-web
+  template:
+    metadata:
+      labels:
+        name: beacons-admin-web
+    spec:
+      containers:
+#========================= 0.1) admin-web          
+      - name: beacon-admin-web-app
+        image: ecse00500096.epam.com:5000/beacon-admin-web:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: regcred 
+

@@ -1,0 +1,461 @@
+#=========================
+#========================= this YAML will deploy beacon-services: 
+#=========================
+#========================= 1) config-service    =delay 75 sec
+#========================= 2) registry-service  =delay 125 sec
+#========================= 3) gataway, uaa-service, logservice           =delay 170,270,390 sec
+#========================= ALL DELAY TIMERs ARE SYSTEM SPECIFIC! this is for low system like i3-3220 (3/4 cores for MobyLinuxVM) 8192mb RAM + 4 GB SWAP, no ssd
+#========================= so it might be too much time spent for systems with better performance 
+
+
+#========================= \\\\\\\\\ Services //////// =========================#
+
+#========================= Registry Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: registry-app
+  namespace: testing
+spec:
+  ports:
+  - port: 10005
+    name: regisrty-port
+    nodePort: 31205
+  - port: 10006
+    name: regisrty
+    nodePort: 31206
+  selector:
+    name: beacons-registry
+  type: NodePort
+---
+#========================= config-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-app
+  namespace: testing
+spec:
+  ports:
+  - port: 10100
+    name: config-port
+    nodePort: 32102
+  - port: 10101
+    name: config
+    nodePort: 31101
+  selector:
+    name: beacons-config
+  type: NodePort
+---
+
+#========================= gateway Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-app
+  namespace: testing
+spec:
+  ports:
+  - port: 10020
+    name: gateway-port
+    nodePort: 31120
+  - port: 10021
+    name: gateway-debug
+    nodePort: 31121
+  selector:
+    name: beacons-gateway
+  type: NodePort
+---
+
+#========================= admin-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-app
+  namespace: testing
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 32283
+  selector:
+    name: beacons-admin-web
+  type: NodePort
+
+
+
+#=========================
+#========================= Deployments
+#=========================
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-admin-web
+  namespace: testing
+  labels:
+    app: beacons-admin-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-admin-web
+  template:
+    metadata:
+      labels:
+        name: beacons-admin-web
+    spec:
+      containers:
+#========================= 0.1) admin-web          
+      - name: beacon-admin-web-app
+        image: ecse00500096.epam.com:5000/beacon-admin-web-testing:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: regcred 
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-config
+  namespace: testing
+  labels:
+    app: beacons-config
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-config
+  template:
+    metadata:
+      labels:
+        name: beacons-config
+    spec:
+      containers:
+#========================= 1) config-service    =delay 75 sec
+      - name: config-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-config-service:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: TESTING
+        - name: port
+          value: "31205"
+        ports:
+        - containerPort: 10100
+        - containerPort: 10101
+        readinessProbe:
+          tcpSocket:
+            port: 10100
+          initialDelaySeconds: 45
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10100
+           initialDelaySeconds: 45
+           periodSeconds: 10
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred 
+           
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-registry
+  namespace: testing
+  labels:
+    app: beacons-registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-registry
+  template:
+    metadata:
+      labels:
+        name: beacons-registry
+    spec:
+      containers:
+#========================= 2) registry-service  =delay 125 sec
+      - name: regisrtry-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-registry-service:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: TESTING
+        - name: port
+          value: "31205"
+        - name: reg_port
+          value: "32102"
+        ports:
+        - containerPort: 10005
+        - containerPort: 10006
+        readinessProbe:
+          tcpSocket:
+            port: 10005
+          initialDelaySeconds: 125
+          periodSeconds: 15
+          failureThreshold: 12
+        livenessProbe:
+           tcpSocket:
+             port: 10005
+           initialDelaySeconds: 125
+           periodSeconds: 15
+           failureThreshold: 12
+      imagePullSecrets:
+      - name: regcred
+
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-gateway
+  namespace: testing
+  labels:
+    app: beacons-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-gateway
+  template:
+    metadata:
+      labels:
+        name: beacons-gateway
+    spec:
+      containers:
+#========================= 3.1) gateway           =delay 195 sec
+      - name: gateway-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-gateway:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: TESTING
+        - name: port
+          value: "31205"
+        ports:
+        - containerPort: 10020
+        - containerPort: 10021
+        readinessProbe:
+          tcpSocket:
+            port: 10020
+          initialDelaySeconds: 95
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10020
+           initialDelaySeconds: 95
+           periodSeconds: 10 
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred
+
+           
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-uaa
+  namespace: testing
+  labels:
+    app: beacons-uaa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-uaa
+  template:
+    metadata:
+      labels:
+        name: beacons-uaa
+    spec:
+      containers:
+#========================= 3.2) uaa-service           =delay 225 sec
+      - name: uaa-service-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-uaa-service:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: TESTING
+        - name: port
+          value: "31205"
+        ports:
+        - containerPort: 10035
+        - containerPort: 10036
+        readinessProbe:
+          tcpSocket:
+            port: 10035
+          initialDelaySeconds: 125
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10035
+           initialDelaySeconds: 125
+           periodSeconds: 10 
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred
+
+
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-building
+  namespace: testing
+  labels:
+    app: beacons-building
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-building
+  template:
+    metadata:
+      labels:
+        name: beacons-building
+    spec:
+      containers:
+#========================= 5.4) building-service         =delay 355 sec
+      - name: building-service-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-building-service:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: TESTING
+        - name: port
+          value: "31205"
+        ports:
+        - containerPort: 10040
+        - containerPort: 10041
+        readinessProbe:
+          tcpSocket:
+            port: 10040
+          initialDelaySeconds: 155
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10040
+           initialDelaySeconds: 155
+           periodSeconds: 10 
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred
+
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-monitor
+  namespace: testing
+  labels:
+    app: beacons-monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-monitor
+  template:
+    metadata:
+      labels:
+        name: beacons-monitor
+    spec:
+      containers:
+      - name: monitor-service-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-monitor-service:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: DEBUG 
+        - name: profile
+          value: TESTING
+        - name: port
+          value: "31205"
+        ports:
+        - containerPort: 10080
+        - containerPort: 10081
+        readinessProbe:
+          tcpSocket:
+            port: 10080
+          initialDelaySeconds: 145
+          periodSeconds: 10
+        livenessProbe:
+           tcpSocket:
+            port: 10080
+           initialDelaySeconds: 145
+           periodSeconds: 10
+      imagePullSecrets:
+      - name: regcred 
