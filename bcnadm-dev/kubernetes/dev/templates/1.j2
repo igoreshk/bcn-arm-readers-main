@@ -1,0 +1,187 @@
+#========================= \\\\\\\\\ Services //////// =========================#
+
+#========================= Registry Service +
+apiVersion: v1
+kind: Service
+metadata:
+  name: registry-app
+  namespace: dev
+spec:
+  ports:
+  - port: 10005
+    name: regisrty-port
+    nodePort: 30205
+  - port: 10006
+    name: regisrty-debug
+    nodePort: 30206
+  selector:
+    name: beacons-registry
+  type: NodePort
+---
+#========================= config-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-app
+  namespace: dev
+spec:
+  ports:
+  - port: 10100
+    name: config-port
+    nodePort: 30200
+  - port: 10101
+    name: config-debug
+    nodePort: 32101
+  selector:
+    name: beacons-config
+  type: NodePort
+---
+#========================= gateway-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-app
+  namespace: dev
+spec:
+  ports:
+  - port: 10020
+    name: gateway-port
+    nodePort: 30220
+  - port: 10021
+    name: gateway-debug
+    nodePort: 30221
+  selector:
+    name: beacons-gateway
+  type: NodePort
+---
+#========================= uaa-service-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: uaa-service-app
+  namespace: dev
+spec:
+  ports:
+  - port: 10035
+    name: uaa-service-port
+    nodePort: 30235
+  - port: 10036
+    name: uaa-service-debug
+    nodePort: 30236
+  selector:
+    name: beacons-uaa
+  type: NodePort
+---
+#========================= building-service-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: building-service-app
+  namespace: dev
+spec:
+  ports:
+  - port: 10040
+    name: building-service-port
+    nodePort: 30240
+  - port: 10041
+    name: building-service-debug
+    nodePort: 30241
+  selector:
+    name: beacons-building
+  type: NodePort
+---
+#========================= monitor-service-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: monitor-service-app
+  namespace: dev
+spec:
+  ports:
+  - port: 10080
+    name: monitor-service-port
+    nodePort: 32280
+  - port: 10081
+    name: monitor-service-debug
+    nodePort: 32281
+  selector:
+    name: beacons-monitor
+  type: NodePort
+
+
+---
+#========================= mobile-rest-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: mobile-service
+  namespace: dev
+spec:
+  ports:
+  - port: 10070
+    name: mobile-service
+    nodePort: 30270
+  - port: 10071
+    name: mobile-service-debug
+    nodePort: 30271
+  selector:
+    name: beacons-mobile-service
+  type: NodePort
+
+ 
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-config
+  namespace: dev
+  labels:
+    app: beacons-config
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-config
+  template:
+    metadata:
+      labels:
+        name: beacons-config
+    spec:
+      containers:
+#========================= 1) config-service    =delay 75 sec
+      - name: config-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-config-service:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: DEV
+        - name: port
+          value: "30205"
+        ports:
+        - containerPort: 10100
+        - containerPort: 10101
+        readinessProbe:
+          tcpSocket:
+            port: 10100
+          initialDelaySeconds: 45
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10100
+           initialDelaySeconds: 45
+           periodSeconds: 10
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred 

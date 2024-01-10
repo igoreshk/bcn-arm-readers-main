@@ -1,0 +1,25 @@
+server:
+  port: 10100
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      enabled: true
+      server:
+        git:
+          uri: git@git.epam.com:epm-lstr/epm-lstr-bcn/bcn-config.git
+          search-paths:
+            - spec/config/default
+          force-pull: true
+          ignoreLocalSshSettings: true
+          private-key: ${spring-cloud-config-server-git-private-key}
+
+eureka:
+  client:
+    region: default
+    registry-fetch-interval-seconds: 5
+    service-url:
+      defaultZone: http://localhost:10005/eureka/
+  instance:
+    prefer-ip-address: true

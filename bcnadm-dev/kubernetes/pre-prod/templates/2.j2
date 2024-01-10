@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-config
+  namespace: pre-prod
+  labels:
+    app: beacons-config
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-config
+  template:
+    metadata:
+      labels:
+        name: beacons-config
+    spec:
+      containers:
+#========================= 1) config-service    =delay 75 sec
+      - name: config-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-config-service:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: PRE-PROD
+        - name: port
+          value: "30005"
+        ports:
+        - containerPort: 10100
+        - containerPort: 10101
+        readinessProbe:
+          tcpSocket:
+            port: 10100
+          initialDelaySeconds: 35
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10100
+           initialDelaySeconds: 35
+           periodSeconds: 10
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred

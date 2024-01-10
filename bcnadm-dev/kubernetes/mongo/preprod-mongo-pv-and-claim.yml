@@ -1,0 +1,38 @@
+---
+
+#========================= \\\\\\\\\ PersistentVolume //////// =========================#
+#========================= mongo PersistentVolume 
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: mongo-pv-volume-preprod
+  namespace: mongodb-preprod
+  labels:
+    type: local
+    name: beacons
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/data/mongodb-data-preprod"
+---
+
+#========================= \\\\\\\\\  PV Claims //////// =========================#
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mongo-pv-claim-preprod
+  namespace: mongodb-preprod
+  labels:
+    name: beacons
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi

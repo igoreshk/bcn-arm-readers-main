@@ -1,0 +1,220 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-uaa
+  namespace: testing
+  labels:
+    app: beacons-uaa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-uaa
+  template:
+    metadata:
+      labels:
+        name: beacons-uaa
+    spec:
+      containers:
+#========================= 3.2) uaa-service           =delay 225 sec
+      - name: uaa-service-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-uaa-service:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: TESTING
+        - name: port
+          value: "31205"
+        ports:
+        - containerPort: 10035
+        - containerPort: 10036
+        readinessProbe:
+          tcpSocket:
+            port: 10035
+          initialDelaySeconds: 125
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10035
+           initialDelaySeconds: 125
+           periodSeconds: 10 
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred
+
+
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-building
+  namespace: testing
+  labels:
+    app: beacons-building
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-building
+  template:
+    metadata:
+      labels:
+        name: beacons-building
+    spec:
+      containers:
+#========================= 5.4) building-service         =delay 355 sec
+      - name: building-service-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-building-service:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: TESTING
+        - name: port
+          value: "31205"
+        ports:
+        - containerPort: 10040
+        - containerPort: 10041
+        readinessProbe:
+          tcpSocket:
+            port: 10040
+          initialDelaySeconds: 155
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10040
+           initialDelaySeconds: 155
+           periodSeconds: 10 
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-monitor
+  namespace: testing
+  labels:
+    app: beacons-monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-monitor
+  template:
+    metadata:
+      labels:
+        name: beacons-monitor
+    spec:
+      containers:
+      - name: monitor-service-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-monitor-service:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: TESTING
+        - name: port
+          value: "31205"
+        ports:
+        - containerPort: 10080
+        - containerPort: 10081
+        readinessProbe:
+          tcpSocket:
+            port: 10080
+          initialDelaySeconds: 145
+          periodSeconds: 10
+        livenessProbe:
+           tcpSocket:
+            port: 10080
+           initialDelaySeconds: 145
+           periodSeconds: 10
+      imagePullSecrets:
+      - name: regcred 
+
+ 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-mobile-service
+  namespace: testing
+  labels:
+    app: beacons-mobile-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-mobile-service
+  template:
+    metadata:
+      labels:
+        name: beacons-mobile-service
+    spec:
+      containers:          
+#========================= 5.1) mobile-service         =delay 295 sec
+      - name: mobile-service-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-mobile-service:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: TESTING
+        - name: port
+          value: "31205"
+        ports:
+        - containerPort: 10070
+        - containerPort: 10071
+        readinessProbe:
+          tcpSocket:
+            port: 10070
+          initialDelaySeconds: 195
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10070
+           initialDelaySeconds: 195
+           periodSeconds: 10 
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred

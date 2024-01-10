@@ -1,0 +1,53 @@
+---
+#========================= MongoDB Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-app
+  namespace: mongodb
+spec:
+  ports:
+  - port: 27017
+    nodePort: 32017
+  selector:
+    name: mongodb
+  type: NodePort
+
+
+
+#=========================
+#========================= Deployment
+#=========================
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  namespace: mongodb
+  labels:
+    app: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: mongodb
+  template:
+    metadata:
+      labels:
+        name: mongodb
+    spec:
+      containers:
+      #========================= 0.1) mongodb          
+      - name: mongo-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-mongo:dev
+        ports:
+          - containerPort: 27017
+        volumeMounts:
+            - mountPath: /data/mongodb
+              name: mongodb
+      imagePullSecrets:
+      - name: regcred
+      volumes:
+        - name: mongodb
+          persistentVolumeClaim:
+            claimName: mongo-pv-claim

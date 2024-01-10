@@ -1,0 +1,15 @@
+security:
+  oauth2:
+    client:
+      preEstablishedRedirectUri: http://www.example.com/test
+      registeredRedirectUri: http://www.example.com/test
+      accessTokenUri: http://testdomain.com/oauth/token
+      userAuthorizationUri: http://testdomain.com/oauth/authorize
+      clientId: client_id
+      clientSecret: client_secret
+      useCurrentUri: false
+    resource:
+      userInfoUri: http://uaa-service/uaa/me
+      prefer-token-info: false
+    sso:
+      login-path: /login

@@ -1,0 +1,10 @@
+plugins {
+    id 'beacons.service-conventions'
+}
+
+dependencies {
+    implementation('org.springframework.cloud:spring-cloud-starter-config')
+    implementation('org.springframework.cloud:spring-cloud-starter-eureka-server:1.4.7.RELEASE') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+}

@@ -1,0 +1,18 @@
+FROM 'ecse00500096.epam.com:5000/beacons-cloud-mongo:dev'
+MAINTAINER EPM-LSTR-BCN
+
+VOLUME /data/db
+
+ARG CI_COMMIT_REF_NAME="ci_COMMIT_REF_NAMEr"
+ARG CI_COMMIT_SHORT_SHA="ci_COMMIT_SHORT_SHAr"
+ENV CI_COMMIT_REF_NAME1=${CI_COMMIT_REF_NAME}
+ENV CI_COMMIT_SHORT_SHA1=${CI_COMMIT_SHORT_SHA}
+
+RUN touch logfile.log
+RUN echo $CI_COMMIT_REF_NAME1 >> logfile.log
+RUN echo $CI_COMMIT_SHORT_SHA1 >> logfile.log
+
+ENV MONGO_INITDB_ROOT_USERNAME root
+ENV MONGO_INITDB_ROOT_PASSWORD root
+
+COPY mongo_init.js /docker-entrypoint-initdb.d/mongo_init.js

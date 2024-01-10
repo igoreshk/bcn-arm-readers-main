@@ -1,0 +1,17 @@
+watcher:
+  timeout: 3600000
+
+security:
+  oauth2:
+    client:
+      clientId: test
+    resource:
+      userInfoUri: testUserInfoUri
+
+swagger:
+  host: test-host
+
+beacons:
+  cloud:
+    building:
+      valid-image-formats: jpeg, jpg, svg, png

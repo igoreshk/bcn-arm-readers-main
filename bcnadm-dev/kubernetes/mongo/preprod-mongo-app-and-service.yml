@@ -1,0 +1,53 @@
+---
+#========================= MongoDB Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-app
+  namespace: mongodb-preprod
+spec:
+  ports:
+  - port: 27017
+    nodePort: 32217
+  selector:
+    name: mongodb-preprod
+  type: NodePort
+
+
+
+#=========================
+#========================= Deployment
+#=========================
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-preprod
+  namespace: mongodb-preprod
+  labels:
+    app: mongodb-preprod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: mongodb-preprod
+  template:
+    metadata:
+      labels:
+        name: mongodb-preprod
+    spec:
+      containers:
+      #========================= 0.1) mongodb          
+      - name: mongo-app-preprod
+        image: ecse00500096.epam.com:5000/beacons-cloud-mongo:dev
+        ports:
+          - containerPort: 27017
+        volumeMounts:
+            - mountPath: /data/mongodb
+              name: mongodb-preprod
+      imagePullSecrets:
+        - name: regcred
+      volumes:
+        - name: mongodb-preprod
+          persistentVolumeClaim:
+            claimName: mongo-pv-claim-preprod

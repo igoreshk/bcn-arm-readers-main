@@ -1,0 +1,8 @@
+rootProject.name = 'beacon-admin'
+include 'beacons-cloud-config-service'
+include 'beacons-cloud-gateway'
+include 'beacons-cloud-registry-service'
+include 'beacons-cloud-building-service'
+include 'beacons-cloud-uaa-service'
+include 'beacons-cloud-monitor-service'
+include 'beacons-cloud-mobile-service'

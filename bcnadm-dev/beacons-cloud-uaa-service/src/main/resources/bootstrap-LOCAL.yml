@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    config:
+      name: uaa-service
+      discovery:
+        enabled: true
+        service-id: config-service
+    vault:
+      enabled: false
+  data:
+    mongodb:
+      auto-index-creation: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10005/eureka/

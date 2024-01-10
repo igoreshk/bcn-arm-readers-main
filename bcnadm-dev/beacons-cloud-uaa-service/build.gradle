@@ -1,0 +1,21 @@
+plugins {
+    id 'beacons.common-service-conventions'
+}
+
+dependencies {
+    implementation('org.springframework.cloud:spring-cloud-starter-oauth2')
+    implementation('org.springframework.cloud:spring-cloud-starter-oauth2')
+    implementation('org.springframework.cloud:spring-cloud-starter-security')
+
+    testImplementation('org.springframework.security:spring-security-test')
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.84
+            }
+        }
+    }
+}

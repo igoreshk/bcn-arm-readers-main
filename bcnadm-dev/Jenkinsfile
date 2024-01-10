@@ -1,0 +1,270 @@
+#!groovy
+
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent { 
+        docker { 
+            label 'docker && spb'
+            image 'artifactoryspb.epam.com/epm-lstr-bcn-docker/gradle6.5'
+            args '-u root:root -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
+        } 
+    }
+    parameters {
+        booleanParam (
+            defaultValue: false,
+            description: 'Boolean parameter to deploy on testing',
+            name : 'DEPLOY_TO_TESTING')
+    }
+    environment {
+        SSLVAULTTOKEN = credentials('Beacon-SSLVaultToken')
+        SHORT_COMMIT = "${GIT_COMMIT[0..7]}"
+        TAG = "${BRANCH_NAME}-${SHORT_COMMIT}-${BUILD_NUMBER}"
+        ARTIFACTORY = 'artifactoryspb.epam.com/epm-lstr-bcn-docker/beacons'
+        SERVICENAMES = 'beacons-cloud-building-service,beacons-cloud-gateway,beacons-cloud-monitor-service,beacons-cloud-trilateration-service,beacons-cloud-uaa-service,beacons-cloud-config-service,beacons-cloud-registry-service'
+    }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '20', artifactNumToKeepStr: '20'))
+        timestamps()
+        newContainerPerStage()
+    }
+    stages {
+        stage('Building-Web-DEV') {
+            when { 
+                not { expression { return params.DEPLOY_TO_TESTING } }
+                branch 'dev'
+            } 
+            steps {
+            //-----------------------build_admin_web-----------------------------------------
+                sh '''
+                    cd ./beacon-admin-web
+                    rm .env
+                    cp .env.dev .env
+                    gradle build
+                    tar -cvf front-end.tar ./build
+                    rm -rfv node_modules 1> /dev/null 
+                    '''  
+            }
+        }
+        stage('Building-Web-testing') {
+            when { 
+                anyOf {
+                    expression { return params.DEPLOY_TO_TESTING }
+                    allOf {
+                        not { branch 'dev' } 
+                        not { branch pattern: "release-\\d+\\.\\d+\\.\\d+", comparator: "REGEXP" }
+                    }
+                }
+            }
+            steps {
+            //-----------------------build_admin_web_for_testing------------------------------
+                sh '''
+                    cd ./beacon-admin-web
+                    rm .env
+                    cp .env.testing .env
+                    gradle build
+                    tar -cvf front-end-for-testing.tar ./build
+                    rm -rfv node_modules 1> /dev/null 
+                    '''
+            }
+        }
+        stage('Building-Web-preprod') {
+            when { 
+                not { expression { return params.DEPLOY_TO_TESTING } }
+                branch pattern: "release-\\d+\\.\\d+\\.\\d+", comparator: "REGEXP"
+            } 
+            steps {
+            //-----------------------build_admin_web_for_preprod------------------------------
+                sh '''
+                    cd ./beacon-admin-web
+                    rm .env
+                    cp .env.pre-prod .env
+                    gradle build
+                    tar -cvf front-end-for-preprod.tar ./build
+                    rm -rfv node_modules 1> /dev/null 
+                    '''
+            }
+        }
+        stage('Building-rest-apps') {
+            steps {
+            //-----------------------build_rest_apps_by_function------------------------------
+                script {
+                    buildRestapps(SERVICENAMES)
+                }
+            }
+        }
+        stage ('Dockering-WEB-DEV') {
+            when { 
+                not { expression { return params.DEPLOY_TO_TESTING } }
+                branch 'dev'
+            } 
+            steps {
+                sh 'sed -i "s/ecse00500096.epam.com:5000/artifactoryspb.epam.com\\/epm-lstr-bcn-docker/g" ./beacon-admin-web/beacon-admin-web.Dockerfile'
+                    //---------------------------------------beacon-admin-web-------------------------------------------- 
+                sh '''
+                    cd beacon-admin-web 
+                    docker build -f beacon-admin-web.Dockerfile --build-arg artifact_file=front-end --build-arg nginx_conf=nginx-default --build-arg CI_COMMIT_SHORT_SHA=$GIT_COMMIT --build-arg CI_COMMIT_REF_NAME=$BRANCH_NAME . -t $ARTIFACTORY/beacon-admin-web:$TAG
+                    docker push $ARTIFACTORY/beacon-admin-web:$TAG
+                    '''
+            }
+        }
+        stage ('Dockering-WEB-testing') {
+            when { 
+                anyOf {
+                    expression { return params.DEPLOY_TO_TESTING }
+                    allOf {
+                        not { branch 'dev' } 
+                        not { branch pattern: "release-\\d+\\.\\d+\\.\\d+", comparator: "REGEXP" }
+                    }
+                }
+            }
+            steps {
+                sh 'sed -i "s/ecse00500096.epam.com:5000/artifactoryspb.epam.com\\/epm-lstr-bcn-docker/g" ./beacon-admin-web/beacon-admin-web.Dockerfile'
+                //---------------------------------------beacon-admin-web-testing-------------------------------------
+                sh '''
+                    cd beacon-admin-web
+                    docker build -f beacon-admin-web.Dockerfile --build-arg artifact_file=front-end-for-testing --build-arg nginx_conf=nginx-default-testing --build-arg CI_COMMIT_SHORT_SHA=$GIT_COMMIT --build-arg CI_COMMIT_REF_NAME=$BRANCH_NAME . -t $ARTIFACTORY/beacon-admin-web-testing:$TAG
+                    docker push $ARTIFACTORY/beacon-admin-web-testing:$TAG
+                    '''
+            }
+        }
+        stage ('Dockering-WEB-preprod') {
+            when { 
+                not { expression { return params.DEPLOY_TO_TESTING } }
+                branch pattern: "release-\\d+\\.\\d+\\.\\d+", comparator: "REGEXP"
+            } 
+            steps {
+                sh 'sed -i "s/ecse00500096.epam.com:5000/artifactoryspb.epam.com\\/epm-lstr-bcn-docker/g" ./beacon-admin-web/beacon-admin-web.Dockerfile'
+                //---------------------------------------beacon-admin-web-preprod---------------------------------------   
+                sh '''
+                    cd beacon-admin-web
+                    docker build -f beacon-admin-web.Dockerfile --build-arg artifact_file=front-end-for-preprod --build-arg nginx_conf=nginx-default-preprod --build-arg CI_COMMIT_SHORT_SHA=$GIT_COMMIT --build-arg CI_COMMIT_REF_NAME=$BRANCH_NAME . -t $ARTIFACTORY/beacon-admin-web-preprod:$TAG
+                    docker push $ARTIFACTORY/beacon-admin-web-preprod:$TAG
+                    '''
+            }
+        }
+        stage ('Dockering-rest-apps') {
+            steps {
+                //---------------------------------------modify-Dockerfile-----------------------------------------------
+                sh 'sed -i "s/ecse00500096.epam.com:5000/artifactoryspb.epam.com\\/epm-lstr-bcn-docker/g" ./*/Dockerfile'
+                //---------------------------------------Dockering_rest_apps_by_function---------------------------------
+                script {
+                    dockeringRestApps(SERVICENAMES)
+                }
+            }
+        }
+        // stage ('Deploy_to_DEV') {
+        //     when { 
+        //         not { expression { return params.DEPLOY_TO_TESTING } }
+        //         branch 'dev'
+        //     } 
+        //     agent { 
+        //         docker { 
+        //             label 'docker && spb'
+        //             image 'artifactoryspb.epam.com/epm-lstr-bcn-docker/ansible-runner2'
+        //             args '-u root:root'
+        //         } 
+        //     }
+        //     environment {
+        //         BASED_40F_CONFIG = credentials('EPM-LSTR-BCNADM-DEV-KUBE-CONFIG')
+        //     }
+        //     steps {
+        //         sh '''
+        //             mkdir -p  ~/.kube/
+        //             cat $BASED_40F_CONFIG | base64 -d > ~/.kube/config
+        //             kubectl get pods -n dev
+        //             cp ./kubernetes/dev/templates/*.j2 /var/ansible-runner/
+        //             '''
+
+        //         git branch: 'master',
+        //             credentialsId: 'bcn-automation-ansible-token',
+        //             url: 'https://git.epam.com/epm-lstr/epm-lstr-bcn/bcn-automation-ansible.git'
+
+        //         sh '''
+        //             cp /var/ansible-runner/*.j2 ./ansible-runner/templates/
+        //             cd ./ansible-runner/
+        //             sed -i "s/ecse00500096.epam.com:5000/artifactoryspb.epam.com\\/epm-lstr-bcn-docker\\/beacons/g" ./templates/*.j2
+        //             ansible-playbook -e branch=$TAG -e namespace=dev -i inventory deploy-order.yml
+        //             '''
+        //     }
+        // }
+        stage ('Deploy_to_testing') {
+            when {
+                expression { return params.DEPLOY_TO_TESTING }
+            }
+            agent { 
+                docker { 
+                    label 'docker && spb'
+                    image 'artifactoryspb.epam.com/epm-lstr-bcn-docker/ansible-runner2'
+                    args '-u root:root'
+                } 
+            }
+            environment {
+                BASED_40F_CONFIG = credentials('EPM-LSTR-BCNADM-DEV-KUBE-CONFIG')
+            }
+            steps {
+                sh '''
+                    mkdir -p  ~/.kube/
+                    cat $BASED_40F_CONFIG | base64 -d > ~/.kube/config
+                    kubectl get pods -n testing
+                    cp ./kubernetes/testing/templates/*.j2 /var/ansible-runner/
+                    '''
+
+                git branch: 'master',
+                    credentialsId: 'bcn-automation-ansible-token',
+                    url: 'https://git.epam.com/epm-lstr/epm-lstr-bcn/bcn-automation-ansible.git'
+
+                sh '''
+                    cp /var/ansible-runner/*.j2 ./ansible-runner/templates/
+                    cd ./ansible-runner/
+                    sed -i "s/ecse00500096.epam.com:5000/artifactoryspb.epam.com\\/epm-lstr-bcn-docker\\/beacons/g" ./templates/*.j2
+                    ansible-playbook -e branch=$TAG -e namespace=testing -i inventory deploy-order.yml
+                    ''' 
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()  
+        }
+        // success {
+        //   script {
+        //     currentBuild.result = 'SUCCESS'
+        //     office365ConnectorSend color: 'Green', message: 'Build was SUCCESSFUL', status: 'SUCCESS', webhookUrl: 'https://epam.webhook.office.com/webhookb2/da501057-c93b-453b-a976-a8ae2872e607@b41b72d0-4e9f-4c26-8a69-f949f367c91d/JenkinsCI/7fc0182db68c4ff7986268f3db117386/dfc9c582-a98c-414d-a1d2-7fac9006042e'
+        //   }    
+        //   emailext body: 'Build was SUCCESSFUL', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: '${BRANCH_NAME}-${BUILD_NUMBER}'
+        // }
+        failure {
+          script {
+            currentBuild.result = 'FAILURE'
+            office365ConnectorSend color: 'Red', message: 'Build FAILED', status: 'FAILED', webhookUrl: 'https://epam.webhook.office.com/webhookb2/da501057-c93b-453b-a976-a8ae2872e607@b41b72d0-4e9f-4c26-8a69-f949f367c91d/JenkinsCI/cea3579592ab4b399fb57ec0b4f33f1c/dfc9c582-a98c-414d-a1d2-7fac9006042e'
+          }    
+          emailext body: 'Build has FAILED', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: '${BRANCH_NAME}-${BUILD_NUMBER}'
+        }
+    }
+}
+//Functions
+def buildRestapps(SERVICENAMES) {
+    SERVICENAMES.tokenize(",").each { item ->
+        sh """
+            cd ${item}
+            gradle build
+            mkdir -p ./dist
+            cp  ./build/libs/*.jar ./dist/
+            """
+        if (fileExists("${item}/build/jacocoHtml")) {
+            publishHTML (target: [
+                reportDir: "${item}/build/jacocoHtml",
+                reportFiles: 'index.html',
+                reportName: "${item} report"])
+        }
+    }
+}
+def dockeringRestApps(SERVICENAMES) {
+    SERVICENAMES.tokenize(",").each { item ->
+        sh """
+            docker build -f ${item}/Dockerfile --build-arg CI_COMMIT_SHORT_SHA=$GIT_COMMIT --build-arg   CI_COMMIT_REF_NAME=$BRANCH_NAME --build-arg V_TOKEN=$SSLVAULTTOKEN . -t $ARTIFACTORY/${item}:$TAG
+            docker push $ARTIFACTORY/${item}:$TAG
+            """
+    }
+}

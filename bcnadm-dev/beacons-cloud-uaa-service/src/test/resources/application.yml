@@ -1,0 +1,44 @@
+
+beacons:
+  sso:
+    registeredRedirectUri: http://bcn.lab.epam.com
+  cloud:
+    security:
+      keyStoreEncodedFile: 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
+      keyStorePassword: 123456
+      alias: mytest
+      jwt:
+        keyValue: |
+          -----BEGIN PUBLIC KEY-----
+          MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMWaYpSV/r7I/cwbDLR1lbqH8nKfZVDv
+          IOyJ0Z+XWTOOeXo0JIhsl0Tjr7li6Rj2WINPzsjRGV8LiFdcn9I7yyMCAwEAAQ==
+          -----END PUBLIC KEY-----
+      enabled: false
+
+security:
+  oauth2:
+    client:
+      clientId: test
+      clientSecret: test
+    resource:
+      id: http://10.66.240.219:8080/
+      jwt:
+        keyValue: |
+          -----BEGIN PUBLIC KEY-----
+          MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMWaYpSV/r7I/cwbDLR1lbqH8nKfZVDv
+          IOyJ0Z+XWTOOeXo0JIhsl0Tjr7li6Rj2WINPzsjRGV8LiFdcn9I7yyMCAwEAAQ==
+          -----END PUBLIC KEY-----
+logging:
+  level:
+    org:
+      springframework: INFO
+
+mongo-params:
+  host: localhost
+  port: 27017
+  database: sequence
+  username: root
+  password: root
+
+swagger:
+  host: test-host

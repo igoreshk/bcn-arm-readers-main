@@ -1,0 +1,56 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-registry
+  namespace: dev
+  labels:
+    app: beacons-registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-registry
+  template:
+    metadata:
+      labels:
+        name: beacons-registry
+    spec:
+      containers:
+#========================= 2) registry-service  =delay 125 sec
+      - name: regisrtry-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-registry-service:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: DEV
+        - name: port
+          value: "30205"
+        - name: reg_port
+          value: "30200"
+        ports:
+        - containerPort: 10005
+        - containerPort: 10006
+        readinessProbe:
+          tcpSocket:
+            port: 10005
+          initialDelaySeconds: 125
+          periodSeconds: 15
+          failureThreshold: 12
+        livenessProbe:
+           tcpSocket:
+             port: 10005
+           initialDelaySeconds: 125
+           periodSeconds: 15
+           failureThreshold: 12
+      imagePullSecrets:
+      - name: regcred

@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: config-service
+  profiles:
+    active: local
+  cloud:
+    vault:
+      enabled: false

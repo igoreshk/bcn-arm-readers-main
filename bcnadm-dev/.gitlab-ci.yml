@@ -1,0 +1,349 @@
+image: ecse00500096.epam.com:5000/gradle6.5_docker
+
+stages:
+  - build
+  - build-images
+  - trigers
+ 
+
+#1 front-end is evicted to bcnadm-front
+  
+#2
+build_cloud_building:
+  stage: build
+  tags:
+    - bcnadm
+  script:
+    - cd beacons-cloud-building-service
+    - gradle build -g /cache/.gradle
+
+  allow_failure: false
+
+#3
+build_cloud_config:
+  stage: build
+  tags:
+    - bcnadm
+  script:
+    - cd beacons-cloud-config-service
+    - gradle build -g /cache/.gradle
+  allow_failure: false
+
+#5
+build_cloud_gateway:
+  stage: build
+  tags:
+    - bcnadm
+  script:
+    - cd beacons-cloud-gateway
+    - gradle build -g /cache/.gradle
+  allow_failure: false
+
+#7
+build_cloud_registry:
+  stage: build
+  tags:
+    - bcnadm
+  script:
+    - cd beacons-cloud-registry-service
+    - gradle build -g /cache/.gradle
+  allow_failure: false
+
+#8
+build_cloud_uaa:
+  stage: build
+  tags:
+    - bcnadm
+  script:
+    - cd beacons-cloud-uaa-service
+    - gradle build -g /cache/.gradle
+  allow_failure: false
+
+ #13
+build_cloud_mobile:
+  stage: build
+  tags:
+    - bcnadm
+  script:
+    - cd beacons-cloud-mobile-service
+    - gradle build -g /cache/.gradle
+  
+  allow_failure: false
+
+#16
+build_cloud_monitor:
+  stage: build
+  tags:
+  - bcnadm
+  script:
+  - cd beacons-cloud-monitor-service
+  - gradle build -g /cache/.gradle
+
+  allow_failure: false
+
+####
+####   STAGE - BUILD IMAGES
+####
+ 
+#1 front-end is evicted to bcnadm-front
+
+#2
+image_cloud_building:
+  stage: build-images
+  tags:
+    - bcnadm
+  script:
+    - cd beacons-cloud-building-service
+    - gradle build -g /cache/.gradle
+    - mkdir -p ./dist
+    - cp  ./build/libs/*.jar ./dist/
+    - cd ..  
+    - docker login ecse00500096.epam.com:5000 -u epmlstr -p $reg_pass   
+  #building-service
+    - docker build -f beacons-cloud-building-service/Dockerfile --build-arg CI_COMMIT_SHORT_SHA=$CI_COMMIT_SHORT_SHA --build-arg CI_COMMIT_REF_NAME=$CI_COMMIT_REF_NAME --build-arg V_TOKEN=$SSLVaultToken . -t ecse00500096.epam.com:5000/beacons-cloud-building-service:$CI_BUILD_REF_SLUG
+    - docker push ecse00500096.epam.com:5000/beacons-cloud-building-service:$CI_BUILD_REF_SLUG
+  rules:
+    - if: '$CI_MERGE_REQUEST_EVENT_TYPE == "detached"'
+      when: never
+    - if: '$CI_COMMIT_REF_SLUG == "dev"'
+      when: always
+    - if: '$CI_MERGE_REQUEST_ID != ""'
+      when: manual
+    - if: '$CI_COMMIT_REF_SLUG != "dev"'
+      when: manual
+  allow_failure: true
+
+#3
+image_cloud_config:
+  stage: build-images
+  tags:
+    - bcnadm
+  script:
+    - cd beacons-cloud-config-service
+    - gradle build -g /cache/.gradle
+    - mkdir -p ./dist
+    - cp   ./build/libs/*.jar ./dist/
+    - cd ..  
+    - docker login ecse00500096.epam.com:5000 -u epmlstr -p $reg_pass
+  #config-service
+    - docker build -f beacons-cloud-config-service/Dockerfile --build-arg CI_COMMIT_SHORT_SHA=$CI_COMMIT_SHORT_SHA --build-arg CI_COMMIT_REF_NAME=$CI_COMMIT_REF_NAME --build-arg V_TOKEN=$SSLVaultToken . -t ecse00500096.epam.com:5000/beacons-cloud-config-service:$CI_BUILD_REF_SLUG
+    - docker push ecse00500096.epam.com:5000/beacons-cloud-config-service:$CI_BUILD_REF_SLUG
+  rules:
+    - if: '$CI_MERGE_REQUEST_EVENT_TYPE == "detached"'
+      when: never
+    - if: '$CI_COMMIT_REF_SLUG == "dev"'
+      when: always
+    - if: '$CI_MERGE_REQUEST_ID != ""'
+      when: manual
+    - if: '$CI_COMMIT_REF_SLUG != "dev"'
+      when: manual
+  allow_failure: true
+
+#5
+image_cloud_gateway:
+  stage: build-images
+  tags:
+    - bcnadm
+  script:
+    - cd beacons-cloud-gateway
+    - gradle build -g /cache/.gradle
+    - mkdir -p ./dist
+    - cp   ./build/libs/*.jar ./dist/
+    - cd ..
+    - docker login  ecse00500096.epam.com:5000 -u epmlstr -p $reg_pass
+  #gateway
+    - docker build -f beacons-cloud-gateway/Dockerfile --build-arg CI_COMMIT_SHORT_SHA=$CI_COMMIT_SHORT_SHA --build-arg CI_COMMIT_REF_NAME=$CI_COMMIT_REF_NAME --build-arg V_TOKEN=$SSLVaultToken . -t ecse00500096.epam.com:5000/beacons-cloud-gateway:$CI_BUILD_REF_SLUG
+    - docker push ecse00500096.epam.com:5000/beacons-cloud-gateway:$CI_BUILD_REF_SLUG
+  rules:
+    - if: '$CI_MERGE_REQUEST_EVENT_TYPE == "detached"'
+      when: never
+    - if: '$CI_COMMIT_REF_SLUG == "dev"'
+      when: always
+    - if: '$CI_MERGE_REQUEST_ID != ""'
+      when: manual
+    - if: '$CI_COMMIT_REF_SLUG != "dev"'
+      when: manual
+  allow_failure: true
+
+
+#7
+image_cloud_registry_and_mongo:
+  stage: build-images
+  tags:
+    - bcnadm
+  script:
+    - cd beacons-cloud-registry-service
+    - gradle build -g /cache/.gradle
+    - mkdir -p ./dist
+    - cp   ./build/libs/*.jar ./dist/
+    - cd ..
+    - docker login  ecse00500096.epam.com:5000 -u epmlstr -p $reg_pass
+  #registry
+    - docker build -f beacons-cloud-registry-service/Dockerfile --build-arg CI_COMMIT_SHORT_SHA=$CI_COMMIT_SHORT_SHA --build-arg CI_COMMIT_REF_NAME=$CI_COMMIT_REF_NAME --build-arg V_TOKEN=$SSLVaultToken  . -t ecse00500096.epam.com:5000/beacons-cloud-registry-service:$CI_BUILD_REF_SLUG
+    - docker push ecse00500096.epam.com:5000/beacons-cloud-registry-service:$CI_BUILD_REF_SLUG
+  #cloud_mongodb
+    - docker build --build-arg CI_COMMIT_SHORT_SHA=$CI_COMMIT_SHORT_SHA --build-arg CI_COMMIT_REF_NAME=$CI_COMMIT_REF_NAME . -t ecse00500096.epam.com:5000/beacons-cloud-mongo:$CI_BUILD_REF_SLUG
+    - docker push ecse00500096.epam.com:5000/beacons-cloud-mongo:$CI_BUILD_REF_SLUG
+  rules:
+    - if: '$CI_MERGE_REQUEST_EVENT_TYPE == "detached"'
+      when: never
+    - if: '$CI_COMMIT_REF_SLUG == "dev"'
+      when: always
+    - if: '$CI_MERGE_REQUEST_ID != ""'
+      when: manual
+    - if: '$CI_COMMIT_REF_SLUG != "dev"'
+      when: manual
+  allow_failure: true
+
+#8
+image_cloud_uaa:
+  stage: build-images
+  tags:
+    - bcnadm
+  script:
+    - cd beacons-cloud-uaa-service
+    - gradle build -g /cache/.gradle
+    - mkdir -p ./dist
+    - cp   ./build/libs/*.jar ./dist/
+    - cd ..
+    - docker login  ecse00500096.epam.com:5000 -u epmlstr -p $reg_pass
+  #cloud_uaa
+    - docker build -f beacons-cloud-uaa-service/Dockerfile --build-arg CI_COMMIT_SHORT_SHA=$CI_COMMIT_SHORT_SHA --build-arg CI_COMMIT_REF_NAME=$CI_COMMIT_REF_NAME --build-arg V_TOKEN=$SSLVaultToken . -t ecse00500096.epam.com:5000/beacons-cloud-uaa-service:$CI_BUILD_REF_SLUG
+    - docker push ecse00500096.epam.com:5000/beacons-cloud-uaa-service:$CI_BUILD_REF_SLUG
+  rules:
+    - if: '$CI_MERGE_REQUEST_EVENT_TYPE == "detached"'
+      when: never
+    - if: '$CI_COMMIT_REF_SLUG == "dev"'
+      when: always
+    - if: '$CI_MERGE_REQUEST_ID != ""'
+      when: manual
+    - if: '$CI_COMMIT_REF_SLUG != "dev"'
+      when: manual
+  allow_failure: true
+
+ #13
+image_cloud_mobile:
+  stage: build-images
+  tags:
+    - bcnadm
+  script:
+    - cd beacons-cloud-mobile-service
+    - gradle build -g /cache/.gradle
+    - mkdir -p ./dist
+    - cp   ./build/libs/*.jar ./dist/
+    - cd ..
+    - docker login  ecse00500096.epam.com:5000 -u epmlstr -p $reg_pass
+  #cloud_mobile
+    - docker build -f beacons-cloud-mobile-service/Dockerfile --build-arg CI_COMMIT_SHORT_SHA=$CI_COMMIT_SHORT_SHA --build-arg CI_COMMIT_REF_NAME=$CI_COMMIT_REF_NAME --build-arg V_TOKEN=$SSLVaultToken . -t ecse00500096.epam.com:5000/beacons-cloud-mobile-service:$CI_BUILD_REF_SLUG
+    - docker push ecse00500096.epam.com:5000/beacons-cloud-mobile-service:$CI_BUILD_REF_SLUG
+  rules:
+    - if: '$CI_MERGE_REQUEST_EVENT_TYPE == "detached"'
+      when: never
+    - if: '$CI_COMMIT_REF_SLUG == "dev"'
+      when: always
+    - if: '$CI_MERGE_REQUEST_ID != ""'
+      when: manual
+    - if: '$CI_COMMIT_REF_SLUG != "dev"'
+      when: manual
+  allow_failure: true
+
+#16
+image_cloud_monitor:
+  stage: build-images
+  tags:
+  - bcnadm
+  script:
+    - cd beacons-cloud-monitor-service
+    - gradle build -g /cache/.gradle
+    - mkdir -p ./dist
+    - cp   ./build/libs/*.jar ./dist/
+    - cd ..
+    - docker login  ecse00500096.epam.com:5000 -u epmlstr -p $reg_pass
+    #monitor
+    - docker build -f beacons-cloud-monitor-service/Dockerfile --build-arg CI_COMMIT_SHORT_SHA=$CI_COMMIT_SHORT_SHA --build-arg CI_COMMIT_REF_NAME=$CI_COMMIT_REF_NAME --build-arg V_TOKEN=$SSLVaultToken . -t ecse00500096.epam.com:5000/beacons-cloud-monitor-service:$CI_BUILD_REF_SLUG
+    - docker push ecse00500096.epam.com:5000/beacons-cloud-monitor-service:$CI_BUILD_REF_SLUG
+  rules:
+    - if: '$CI_MERGE_REQUEST_EVENT_TYPE == "detached"'
+      when: never
+    - if: '$CI_COMMIT_REF_SLUG == "dev"'
+      when: always
+    - if: '$CI_MERGE_REQUEST_ID != ""'
+      when: manual
+    - if: '$CI_COMMIT_REF_SLUG != "dev"'
+      when: manual 
+  allow_failure: true
+ 
+
+  # trigger Gitlab-ci to start k8s_rolling_update Testing
+Deploy-to-testing:
+  image: ecse00500096.epam.com:5000/ansible-runner2
+  stage: trigers
+  tags:
+  - bcnadm
+  script: 
+  - mkdir -p  ~/.kube/
+  - mkdir -p /var/ansible-runner/
+  - cp ./kubernetes/testing/templates/*.j2 /var/ansible-runner/
+  - cat $based_40f_config | base64 -d > ~/.kube/config
+  - kubectl get pods -n testing
+  - cd /var/ansible-runner/
+  - git clone https://$Ansible_user:$Ansible_token@git.epam.com/epm-lstr/epm-lstr-bcn/bcn-automation-ansible.git --branch master
+  - ls -la
+  - cd ./bcn-automation-ansible/ansible-runner/
+  - mkdir -p /var/ansible-runner/bcn-automation-ansible/ansible-runner/templates/
+  - cp /var/ansible-runner/*.j2 /var/ansible-runner/bcn-automation-ansible/ansible-runner/templates/
+  - ansible-playbook -e branch=$CI_BUILD_REF_SLUG -e namespace=testing --skip-tags "front" -i inventory deploy-order.yml
+  rules:
+  - if: '$CI_MERGE_REQUEST_EVENT_TYPE == "detached"'
+    when: never
+  - if: '$CI_MERGE_REQUEST_ID != ""'
+    when: manual
+  - if: '$CI_COMMIT_REF_SLUG != "dev"'
+    when: manual 
+  allow_failure: true
+
+Deploy-to-DEV:
+  image: ecse00500096.epam.com:5000/ansible-runner2
+  stage: trigers
+  tags:
+  - bcnadm
+  script: 
+  - mkdir -p  ~/.kube/
+  - mkdir -p /var/ansible-runner/
+  - cp ./kubernetes/dev/templates/*.j2 /var/ansible-runner/
+  - cat $based_40f_config | base64 -d > ~/.kube/config
+  - kubectl get pods -n dev
+  - cd /var/ansible-runner/
+  - git clone https://$Ansible_user:$Ansible_token@git.epam.com/epm-lstr/epm-lstr-bcn/bcn-automation-ansible.git --branch master
+  - ls -la
+  - cd ./bcn-automation-ansible/ansible-runner/
+  - mkdir -p /var/ansible-runner/bcn-automation-ansible/ansible-runner/templates/
+  - cp /var/ansible-runner/*.j2 /var/ansible-runner/bcn-automation-ansible/ansible-runner/templates/
+  - ansible-playbook -e branch=$CI_BUILD_REF_SLUG -e namespace=dev --skip-tags "front"  -i inventory deploy-order.yml
+  when: always
+  only:
+  - dev
+  allow_failure: true
+
+Deploy-to-STAGE:
+  image: ecse00500096.epam.com:5000/ansible-runner2
+  stage: trigers
+  tags:
+  - bcnadm
+  script: 
+  - mkdir -p  ~/.kube/
+  - mkdir -p /var/ansible-runner/
+  - cp ./kubernetes/stage/templates/*.j2 /var/ansible-runner/
+  - cat $based_40f_config | base64 -d > ~/.kube/config
+  - kubectl get pods -n stage
+  - cd /var/ansible-runner/
+  - git clone https://$Ansible_user:$Ansible_token@git.epam.com/epm-lstr/epm-lstr-bcn/bcn-automation-ansible.git --branch master
+  - ls -la
+  - cd ./bcn-automation-ansible/ansible-runner/
+  - mkdir -p /var/ansible-runner/bcn-automation-ansible/ansible-runner/templates/
+  - cp /var/ansible-runner/*.j2 /var/ansible-runner/bcn-automation-ansible/ansible-runner/templates/
+  - ansible-playbook -e branch=$CI_BUILD_REF_SLUG -e namespace=stage --skip-tags "front" -i inventory deploy-order.yml
+  when: manual
+  only:
+  - dev
+  allow_failure: true

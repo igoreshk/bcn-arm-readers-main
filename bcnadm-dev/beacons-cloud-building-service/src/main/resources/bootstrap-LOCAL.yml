@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    config:
+      name: building-service
+      discovery:
+        enabled: true
+        service-id: config-service
+    vault:
+      enabled: false
+  data:
+    mongodb:
+      auto-index-creation: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10005/eureka/
+
+security-oauth2-client-id: ${feign-security-oauth2-client-id}
+security-oauth2-client-secret: ${feign-security-oauth2-client-secret}

@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          search-paths:
+            - spec/config/default
+            - spec/config/testing
+
+logging:
+  file:
+    name: logs/${spring.application.name}.log
+  level:
+    root: DEBUG

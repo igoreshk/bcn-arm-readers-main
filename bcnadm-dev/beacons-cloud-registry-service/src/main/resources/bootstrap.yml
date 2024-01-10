@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: registry-service # application name
+  cloud:
+    config:
+      uri: http://localhost:10100 # address of config service
+
+    vault:
+      host: ecse005001ed.epam.com
+      port: 8200
+      scheme: https
+      uri: https://ecse005001ed.epam.com:8200/
+      connection-timeout: 5000
+      read-timeout: 15000
+      authentication: TOKEN
+      token: ${vault-token}
+      kv:
+        enabled: true
+        backend: secrets
+        default-context: registry-service
+      fail-fast: false

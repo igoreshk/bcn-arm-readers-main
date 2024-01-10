@@ -1,0 +1,588 @@
+#=========================
+#========================= this YAML will deploy beacon-services: 
+#=========================
+#========================= 1) config-service    =delay 75 sec
+#========================= 2) registry-service  =delay 125 sec
+#========================= 3) gataway, uaa-service, logservice           =delay 170,270,390 sec
+#========================= ALL DELAY TIMERs ARE SYSTEM SPECIFIC! this is for low system like i3-3220 (3/4 cores for MobyLinuxVM) 8192mb RAM + 4 GB SWAP, no ssd
+#========================= so it might be too much time spent for systems with better performance 
+
+
+#========================= \\\\\\\\\ Services //////// =========================#
+
+#========================= Registry Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: registry-app
+  namespace: dev
+spec:
+  ports:
+  - port: 10005
+    name: regisrty-port
+    nodePort: 30205
+  - port: 10006
+    name: regisrty-debug
+    nodePort: 30206
+  selector:
+    name: beacons-registry
+  type: NodePort
+---
+#========================= config-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-app
+  namespace: dev
+spec:
+  ports:
+  - port: 10100
+    name: config-port
+    nodePort: 30200
+  - port: 10101
+    name: config-debug
+    nodePort: 32101
+  selector:
+    name: beacons-config
+  type: NodePort
+---
+#========================= gateway-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-app
+  namespace: dev
+spec:
+  ports:
+  - port: 10020
+    name: gateway-port
+    nodePort: 30220
+  - port: 10021
+    name: gateway-debug
+    nodePort: 30221
+  selector:
+    name: beacons-gateway
+  type: NodePort
+---
+#========================= uaa-service-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: uaa-service-app
+  namespace: dev
+spec:
+  ports:
+  - port: 10035
+    name: uaa-service-port
+    nodePort: 30235
+  - port: 10036
+    name: uaa-service-debug
+    nodePort: 30236
+  selector:
+    name: beacons-uaa
+  type: NodePort
+---
+#========================= building-service-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: building-service-app
+  namespace: dev
+spec:
+  ports:
+  - port: 10040
+    name: building-service-port
+    nodePort: 30240
+  - port: 10041
+    name: building-service-debug
+    nodePort: 30241
+  selector:
+    name: beacons-building
+  type: NodePort
+---
+#========================= monitor-service-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: monitor-service-app
+  namespace: dev
+spec:
+  ports:
+  - port: 10080
+    name: monitor-service-port
+    nodePort: 32280
+  - port: 10081
+    name: monitor-service-debug
+    nodePort: 32281
+  selector:
+    name: beacons-monitor
+  type: NodePort
+---
+#========================= mobile-rest-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: mobile-service
+  namespace: dev
+spec:
+  ports:
+  - port: 10070
+    name: mobile-service
+    nodePort: 30270
+  - port: 10071
+    name: mobile-service-debug
+    nodePort: 30271
+  selector:
+    name: beacons-mobile-service
+  type: NodePort
+
+---
+#========================= admin-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-app
+  namespace: dev
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30280
+  selector:
+    name: beacons-admin-web
+  type: NodePort
+
+
+
+
+
+#=========================
+#========================= Deployments
+#=========================
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-admin-web
+  namespace: dev
+  labels:
+    app: beacons-admin-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-admin-web
+  template:
+    metadata:
+      labels:
+        name: beacons-admin-web
+    spec:
+      containers:
+#========================= 0.1) admin-web          
+      - name: beacon-admin-web-app
+        image: ecse00500096.epam.com:5000/beacon-admin-web:dev
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: regcred 
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-config
+  namespace: dev
+  labels:
+    app: beacons-config
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-config
+  template:
+    metadata:
+      labels:
+        name: beacons-config
+    spec:
+      containers:
+#========================= 1) config-service    =delay 75 sec
+      - name: config-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-config-service:dev
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: DEV
+        - name: port
+          value: "30205"
+        ports:
+        - containerPort: 10100
+        - containerPort: 10101
+        readinessProbe:
+          tcpSocket:
+            port: 10100
+          initialDelaySeconds: 45
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10100
+           initialDelaySeconds: 45
+           periodSeconds: 10
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred 
+           
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-registry
+  namespace: dev
+  labels:
+    app: beacons-registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-registry
+  template:
+    metadata:
+      labels:
+        name: beacons-registry
+    spec:
+      containers:
+#========================= 2) registry-service  =delay 125 sec
+      - name: regisrtry-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-registry-service:dev
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: DEV
+        - name: port
+          value: "30205"
+        - name: reg_port
+          value: "30200"
+        ports:
+        - containerPort: 10005
+        - containerPort: 10006
+        readinessProbe:
+          tcpSocket:
+            port: 10005
+          initialDelaySeconds: 125
+          periodSeconds: 15
+          failureThreshold: 12
+        livenessProbe:
+           tcpSocket:
+             port: 10005
+           initialDelaySeconds: 125
+           periodSeconds: 15
+           failureThreshold: 12
+      imagePullSecrets:
+      - name: regcred
+
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-gateway
+  namespace: dev
+  labels:
+    app: beacons-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-gateway
+  template:
+    metadata:
+      labels:
+        name: beacons-gateway
+    spec:
+      containers:
+#========================= 3.1) gateway           =delay 195 sec
+      - name: gateway-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-gateway:dev
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: DEV
+        - name: port
+          value: "30205"
+        ports:
+        - containerPort: 10020
+        - containerPort: 10021
+        readinessProbe:
+          tcpSocket:
+            port: 10020
+          initialDelaySeconds: 95
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10020
+           initialDelaySeconds: 95
+           periodSeconds: 10 
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred
+
+           
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-uaa
+  namespace: dev
+  labels:
+    app: beacons-uaa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-uaa
+  template:
+    metadata:
+      labels:
+        name: beacons-uaa
+    spec:
+      containers:
+#========================= 3.2) uaa-service           =delay 225 sec
+      - name: uaa-service-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-uaa-service:dev
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: DEV
+        - name: port
+          value: "30205"
+        ports:
+        - containerPort: 10035
+        - containerPort: 10036
+        readinessProbe:
+          tcpSocket:
+            port: 10035
+          initialDelaySeconds: 125
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10035
+           initialDelaySeconds: 125
+           periodSeconds: 10 
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred
+
+
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-building
+  namespace: dev
+  labels:
+    app: beacons-building
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-building
+  template:
+    metadata:
+      labels:
+        name: beacons-building
+    spec:
+      containers:
+#========================= 5.4) building-service         =delay 355 sec
+      - name: building-service-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-building-service:dev
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: DEV
+        - name: port
+          value: "30205"
+        ports:
+        - containerPort: 10040
+        - containerPort: 10041
+        readinessProbe:
+          tcpSocket:
+            port: 10040
+          initialDelaySeconds: 155
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10040
+           initialDelaySeconds: 155
+           periodSeconds: 10 
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-monitor
+  namespace: dev
+  labels:
+    app: beacons-monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-monitor
+  template:
+    metadata:
+      labels:
+        name: beacons-monitor
+    spec:
+      containers:
+      - name: monitor-service-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-monitor-service:dev
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: DEV
+        - name: port
+          value: "30205"
+        ports:
+        - containerPort: 10080
+        - containerPort: 10081
+        readinessProbe:
+          tcpSocket:
+            port: 10080
+          initialDelaySeconds: 145
+          periodSeconds: 10
+        livenessProbe:
+           tcpSocket:
+            port: 10080
+           initialDelaySeconds: 145
+           periodSeconds: 10
+      imagePullSecrets:
+      - name: regcred 
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-mobile-service
+  namespace: dev
+  labels:
+    app: beacons-mobile-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-mobile-service
+  template:
+    metadata:
+      labels:
+        name: beacons-mobile-service
+    spec:
+      containers:          
+#========================= 5.1) mobile-service         =delay 295 sec
+      - name: mobile-service-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-mobile-service:dev
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: DEV
+        - name: port
+          value: "30205"
+        ports:
+        - containerPort: 10070
+        - containerPort: 10071
+        readinessProbe:
+          tcpSocket:
+            port: 10070
+          initialDelaySeconds: 195
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10070
+           initialDelaySeconds: 195
+           periodSeconds: 10 
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred

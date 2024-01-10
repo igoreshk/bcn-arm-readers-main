@@ -1,0 +1,63 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'checkstyle'
+}
+
+repositories {
+    // TODO: move to building service after Gradle update
+    maven {
+        url "https://repo.osgeo.org/repository/release/"
+    }
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+}
+
+compileJava {
+    options.annotationProcessorPath = configurations.compile
+    options.encoding = "UTF-8"
+}
+
+compileTestJava.options.encoding = "UTF-8"
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+test {
+    finalizedBy jacocoTestReport
+    finalizedBy jacocoTestCoverageVerification
+}
+
+checkstyle {
+    toolVersion = "8.34"
+    configFile rootProject.file("checkstyle.xml")
+}
+
+tasks.withType(Checkstyle) {
+    ignoreFailures = false
+    reports {
+        html.enabled = true
+        xml.enabled = false
+    }
+}
+
+configurations {
+    implementation.exclude module: 'spring-boot-starter-logging'
+}
+
+def jaxbJakartaVersion = '2.3.2'
+
+dependencies {
+    // Required by Java 11+
+    implementation "jakarta.xml.bind:jakarta.xml.bind-api:${jaxbJakartaVersion}"
+    implementation "org.glassfish.jaxb:jaxb-runtime:${jaxbJakartaVersion}"
+}

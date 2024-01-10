@@ -1,0 +1,9 @@
+security:
+  oauth2:
+    client:
+      clientId: test
+    resource:
+      userInfoUri: testUserInfoUri
+
+swagger:
+  host: test-host

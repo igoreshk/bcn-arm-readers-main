@@ -1,0 +1,53 @@
+---
+#========================= MongoDB Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-app
+  namespace: mongodb-test
+spec:
+  ports:
+  - port: 27017
+    nodePort: 32018
+  selector:
+    name: mongodb-testing
+  type: NodePort
+
+
+
+#=========================
+#========================= Deployment
+#=========================
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-testing
+  namespace: mongodb-test
+  labels:
+    app: mongodb-testing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: mongodb-testing
+  template:
+    metadata:
+      labels:
+        name: mongodb-testing
+    spec:
+      containers:
+      #========================= 0.1) mongodb          
+      - name: mongo-app-testing
+        image: ecse00500096.epam.com:5000/beacons-cloud-mongo:dev
+        ports:
+          - containerPort: 27017
+        volumeMounts:
+            - mountPath: /data/mongodb-testing
+              name: mongodb-testing
+      imagePullSecrets:
+        - name: regcred
+      volumes:
+        - name: mongodb-testing
+          persistentVolumeClaim:
+            claimName: mongo-pv-claim-testing

@@ -1,0 +1,31 @@
+plugins {
+    id 'beacons.service-conventions'
+}
+
+dependencies {
+    implementation('org.springframework.cloud:spring-cloud-starter-config')
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+    implementation('org.springframework.cloud:spring-cloud-starter-openfeign')
+    implementation('org.springframework.boot:spring-boot-starter-web') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-oauth2'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-zuul'
+    implementation('org.springframework.cloud:spring-cloud-starter-security')
+
+    compile "javax.servlet:javax.servlet-api:4.0.0"
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('org.springframework.security:spring-security-test')
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.09
+            }
+        }
+    }
+}

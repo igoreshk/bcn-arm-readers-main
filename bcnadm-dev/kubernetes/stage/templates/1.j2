@@ -1,0 +1,112 @@
+#========================= Registry Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: registry-app
+  namespace: stage
+spec:
+  ports:
+  - port: 10005
+    name: regisrty-port
+    nodePort: 30305
+  - port: 10006
+    name: regisrty-debug
+    nodePort: 30306
+  selector:
+    name: beacons-registry
+  type: NodePort
+---
+#========================= config-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-app
+  namespace: stage
+spec:
+  ports:
+  - port: 10100
+    name: config-port
+    nodePort: 30300
+  - port: 10101
+    name: config-debug
+    nodePort: 32301
+  selector:
+    name: beacons-config
+  type: NodePort
+---
+#========================= gateway-app Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-app
+  namespace: stage
+spec:
+  ports:
+  - port: 10020
+    name: gateway-port
+    nodePort: 30320
+  - port: 10021
+    name: gateway-debug
+    nodePort: 30321
+  selector:
+    name: beacons-gateway
+  type: NodePort
+
+ 
+
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-config
+  namespace: stage
+  labels:
+    app: beacons-config
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-config
+  template:
+    metadata:
+      labels:
+        name: beacons-config
+    spec:
+      containers:
+#========================= 1) config-service    =delay 75 sec
+      - name: config-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-config-service:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: DEV
+        - name: port
+          value: "30305"
+        ports:
+        - containerPort: 10100
+        - containerPort: 10101
+        readinessProbe:
+          tcpSocket:
+            port: 10100
+          initialDelaySeconds: 45
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10100
+           initialDelaySeconds: 45
+           periodSeconds: 10
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred 

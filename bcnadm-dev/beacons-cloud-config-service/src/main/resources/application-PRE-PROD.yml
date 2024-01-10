@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          search-paths:
+            - spec/config/default
+            - spec/config/pre-prod
+
+logging:
+  file:
+    name: logs/${spring.application.name}.log
+  level:
+    root: INFO

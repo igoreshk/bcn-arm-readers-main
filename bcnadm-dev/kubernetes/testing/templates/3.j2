@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beacons-gateway
+  namespace: testing
+  labels:
+    app: beacons-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beacons-gateway
+  template:
+    metadata:
+      labels:
+        name: beacons-gateway
+    spec:
+      containers:
+#========================= 3.1) gateway           =delay 195 sec
+      - name: gateway-app
+        image: ecse00500096.epam.com:5000/beacons-cloud-gateway:{{ branch }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "100m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+        env: 
+        - name: loglevel
+          value: INFO 
+        - name: profile
+          value: TESTING
+        - name: port
+          value: "31205"
+        ports:
+        - containerPort: 10020
+        - containerPort: 10021
+        readinessProbe:
+          tcpSocket:
+            port: 10020
+          initialDelaySeconds: 95
+          periodSeconds: 10
+          failureThreshold: 40
+        livenessProbe:
+           tcpSocket:
+             port: 10020
+           initialDelaySeconds: 95
+           periodSeconds: 10 
+           failureThreshold: 40
+      imagePullSecrets:
+      - name: regcred

@@ -1,0 +1,47 @@
+spring:
+  cloud:
+    vault:
+      enabled: false
+    config:
+      discovery:
+        enabled: false
+      enabled: false
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id:
+        reader: reader
+        mobile: mobile
+    properties:
+      sasl:
+        jaas:
+          config: org.apache.kafka.common.security.plain.PlainLoginModule required username="test" password="test";
+        mechanism: PLAIN
+      security:
+        protocol: SASL_PLAINTEXT
+  application:
+    name: monitor-service
+
+eureka:
+  client:
+    enabled: false
+
+security:
+  oauth2:
+    client:
+      clientId: test
+    resource:
+      userInfoUri: testUserInfoUri
+
+swagger:
+  host: test-host
+
+history:
+  period: 14
+
+beacons:
+  cloud:
+    trilateration:
+      coefficientOne: 1.20342
+      coefficientTwo: 6.17009
+      coefficientThree: 0.46058

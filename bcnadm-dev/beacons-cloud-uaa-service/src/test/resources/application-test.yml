@@ -1,0 +1,11 @@
+#it's only for test, will be moved to config repo
+server:
+  port: 11099
+
+eureka:
+  client:
+    enabled: false
+
+spring:
+  profiles:
+    active: test

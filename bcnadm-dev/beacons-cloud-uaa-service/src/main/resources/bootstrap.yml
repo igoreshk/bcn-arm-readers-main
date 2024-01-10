@@ -1,0 +1,30 @@
+spring:
+  cloud:
+    config:
+      name: uaa-service
+      discovery:
+        enabled: true
+        service-id: config-service
+
+    vault:
+      host: ecse005001ed.epam.com
+      port: 8200
+      scheme: https
+      uri: https://ecse005001ed.epam.com:8200/
+      connection-timeout: 5000
+      read-timeout: 15000
+      authentication: TOKEN
+      token: ${vault-token}
+      kv:
+        enabled: true
+        backend: secrets
+        default-context: uaa-service
+      fail-fast: false
+  data:
+    mongodb:
+      auto-index-creation: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10005/eureka/

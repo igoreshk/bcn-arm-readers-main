@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          search-paths:
+            - spec/config/default
+            - spec/config/local
+
+eureka:
+  instance:
+    prefer-ip-address: false
+
+logging:
+  level:
+    root: DEBUG
